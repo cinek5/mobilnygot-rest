@@ -16,14 +16,14 @@ public class TrasaPunktowana extends Trasa {
     private Date dataDodania;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private Date dataModyfikacji;
+    private Date dataUsuniecia;
 
 
-    public TrasaPunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataModyfikacji) {
+    public TrasaPunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
         super(id, skladowePunktyTrasy, grupaGorska);
         this.liczbaPunktow = liczbaPunktow;
         this.dataDodania = dataDodania;
-        this.dataModyfikacji = dataModyfikacji;
+        this.dataUsuniecia = dataUsuniecia;
     }
 
 
@@ -31,7 +31,14 @@ public class TrasaPunktowana extends Trasa {
     public int getLiczbaPunktow() {
         return liczbaPunktow;
     }
+    public Date getDataDodania() {
+        return dataDodania;
+    }
+    public Date getDataUsuniecia() {
+        return dataUsuniecia;
+    }
     public void setLiczbaPunktow(int liczbaPunktow) {
         this.liczbaPunktow = liczbaPunktow;
     }
+
 }
