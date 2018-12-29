@@ -10,6 +10,7 @@ import java.util.List;
  * Created by Cinek on 27.12.2018.
  */
 public class TrasaPunktowana extends Trasa {
+    private String nazwa;
     private Integer liczbaPunktow;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -20,11 +21,20 @@ public class TrasaPunktowana extends Trasa {
     private Long poprzedniaWersjaId;
 
 
-    public TrasaPunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
+    public TrasaPunktowana(Long id, String nazwa, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
         super(id, skladowePunktyTrasy, grupaGorska);
+        this.nazwa = nazwa;
         this.liczbaPunktow = liczbaPunktow;
         this.dataDodania = dataDodania;
         this.dataUsuniecia = dataUsuniecia;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
     public void setLiczbaPunktow(Integer liczbaPunktow) {

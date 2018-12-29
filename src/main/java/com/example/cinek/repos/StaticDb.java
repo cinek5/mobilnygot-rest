@@ -34,7 +34,7 @@ public class StaticDb {
         SkladowyPunktTrasy skladowyPunktTrasy2 = new SkladowyPunktTrasy(punktTrasy2, 2);
         TrasaPunktowana trasaPunktowana = null;
         try {
-           trasaPunktowana = new TrasaPunktowana(new Long(1), asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
+           trasaPunktowana = new TrasaPunktowana(new Long(1), "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
                     sdf.parse("02/10/2018"), null);
         } catch (ParseException ex) {}
         trasy.add(trasaPunktowana);

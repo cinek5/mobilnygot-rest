@@ -1,9 +1,7 @@
 package com.example.cinek.controllers;
 
 import com.example.cinek.exceptions.TrasaNotFoundException;
-import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
-import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.TrasyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,7 @@
 package com.example.cinek.services;
 
 
+import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import org.springframework.stereotype.Service;
 
