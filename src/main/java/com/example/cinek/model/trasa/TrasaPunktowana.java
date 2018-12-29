@@ -17,6 +17,7 @@ public class TrasaPunktowana extends Trasa {
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dataUsuniecia;
+    private Long poprzedniaWersjaId;
 
 
     public TrasaPunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
@@ -26,6 +27,25 @@ public class TrasaPunktowana extends Trasa {
         this.dataUsuniecia = dataUsuniecia;
     }
 
+    public void setLiczbaPunktow(Integer liczbaPunktow) {
+        this.liczbaPunktow = liczbaPunktow;
+    }
+
+    public void setDataDodania(Date dataDodania) {
+        this.dataDodania = dataDodania;
+    }
+
+    public void setDataUsuniecia(Date dataUsuniecia) {
+        this.dataUsuniecia = dataUsuniecia;
+    }
+
+    public Long getPoprzedniaWersjaId() {
+        return poprzedniaWersjaId;
+    }
+
+    public void setPoprzedniaWersjaId(Long poprzedniaWersjaId) {
+        this.poprzedniaWersjaId = poprzedniaWersjaId;
+    }
 
     @Override
     public int getLiczbaPunktow() {
