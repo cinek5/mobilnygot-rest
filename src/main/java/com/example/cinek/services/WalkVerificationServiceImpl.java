@@ -16,33 +16,11 @@ public class WalkVerificationServiceImpl implements WalkVerificationService
         Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null
                         && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
-        if (trasaPunktowanaOptional.isPresent()) {
-            return trasaPunktowanaOptional.get();
-        }
-        else
-        {
-            return null;
-        }    }
-
-    @Override
-    public void confirmTrasa(Long id)
-    {
-        setTrasaStatus(id, Status.potwierdzona);
+        return trasaPunktowanaOptional.orElse(null);
     }
 
     @Override
-    public void discardTrasa(Long id)
-    {
-        setTrasaStatus(id, Status.odrzucona);
-    }
-
-    @Override
-    public void reconsiderTrasa(Long id)
-    {
-        setTrasaStatus(id, Status.doPonownegoRozpatrzenia);
-    }
-
-    private void setTrasaStatus(Long id, Status status)
+    public void setStatus(Long id, Status status)
     {
         Optional<TrasaSkladowa> trasaSkladowaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getId().equals(id)).findAny();
