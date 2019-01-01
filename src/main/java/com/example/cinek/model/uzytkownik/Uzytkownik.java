@@ -1,5 +1,7 @@
 package com.example.cinek.model.uzytkownik;
 
+import com.example.cinek.model.grupa.GrupaGorska;
+
 public abstract class Uzytkownik
 {
     private Long id;

@@ -1,5 +1,6 @@
 package com.example.cinek.model.trasa;
 
+import com.example.cinek.model.grupa.GrupaGorska;
 import com.sun.javafx.beans.IDProperty;
 
 /**
@@ -62,6 +63,9 @@ public class PunktTrasy {
         this.szerokoscGeograficzna = szerokoscGeograficzna;
     }
 
-
-
+    @Override
+    public boolean equals(Object obj)
+    {
+        return id.equals(((PunktTrasy)obj).id);
+    }
 }

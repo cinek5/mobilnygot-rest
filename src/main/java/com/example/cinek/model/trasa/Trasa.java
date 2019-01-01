@@ -44,4 +44,10 @@ public abstract class Trasa {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return id.equals(((Trasa)obj).id);
+    }
 }

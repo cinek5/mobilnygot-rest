@@ -1,5 +1,7 @@
-package com.example.cinek.model.trasa;
+package com.example.cinek.model.Wedrowka;
 
+import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.uzytkownik.Przodownik;
 
 public class TrasaSkladowa
@@ -47,5 +49,11 @@ public class TrasaSkladowa
     public void setStatus(Status status)
     {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return id.equals(((TrasaSkladowa)obj).id);
     }
 }

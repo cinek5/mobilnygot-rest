@@ -2,7 +2,8 @@ package com.example.cinek.services;
 
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.trasa.Status;
-import com.example.cinek.model.trasa.TrasaSkladowa;
+import com.example.cinek.model.Wedrowka.TrasaSkladowa;
+import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.repos.StaticDb;
 
 import java.util.Optional;
@@ -10,10 +11,18 @@ import java.util.Optional;
 public class WalkVerificationServiceImpl implements WalkVerificationService
 {
     @Override
-    public TrasaSkladowa getTrasaToVerification(Long przodownikId)
+    public TrasaSkladowa getTrasaToVerification(Przodownik przodownik)
     {
-        return null;
-    }
+        Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
+                .filter(trasa -> trasa.getVerifyPrzodownik() == null
+                        && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
+        if (trasaPunktowanaOptional.isPresent()) {
+            return trasaPunktowanaOptional.get();
+        }
+        else
+        {
+            return null;
+        }    }
 
     @Override
     public void confirmTrasa(Long id)

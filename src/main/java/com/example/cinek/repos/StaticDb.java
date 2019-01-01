@@ -1,5 +1,6 @@
 package com.example.cinek.repos;
 
+import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.model.trasa.*;
 import com.example.cinek.model.uzytkownik.Przodownik;
@@ -8,8 +9,6 @@ import com.example.cinek.model.uzytkownik.Turysta;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;

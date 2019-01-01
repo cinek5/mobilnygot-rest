@@ -70,5 +70,4 @@ public class TrasaPunktowana extends Trasa {
     public void setLiczbaPunktow(int liczbaPunktow) {
         this.liczbaPunktow = liczbaPunktow;
     }
-
 }
