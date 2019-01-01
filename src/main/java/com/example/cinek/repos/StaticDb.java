@@ -1,10 +1,9 @@
 package com.example.cinek.repos;
 
 import com.example.cinek.model.grupa.GrupaGorska;
-import com.example.cinek.model.trasa.PunktTrasy;
-import com.example.cinek.model.trasa.SkladowyPunktTrasy;
-import com.example.cinek.model.trasa.Trasa;
-import com.example.cinek.model.trasa.TrasaPunktowana;
+import com.example.cinek.model.trasa.*;
+import com.example.cinek.model.uzytkownik.Przodownik;
+import com.example.cinek.model.uzytkownik.Turysta;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +22,9 @@ public class StaticDb {
     public static List<TrasaPunktowana> trasyPunktowane = new ArrayList<>();
     public static List<GrupaGorska> grupyGorskie = new ArrayList<>();
     public static List<PunktTrasy> punktyTrasy = new ArrayList<>();
+    public static List<Przodownik> przodownicy = new ArrayList<>();
+    public static List<Turysta> turysci = new ArrayList<>();
+    public static List<TrasaSkladowa> trasySkladowe = new ArrayList<>();
 
     static
     {
