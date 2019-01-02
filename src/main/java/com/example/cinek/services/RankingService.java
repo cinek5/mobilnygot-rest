@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface RankingService
 {
-    List<Turysta> getRank(Date startDate, Date endDate, List<GrupaGorska> groups);
+    List<Turysta> getRank(Date startDate, Date endDate, List<Long> groups);
     int getPositionInList(List<Turysta> list, Long userId);
 }

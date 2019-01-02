@@ -5,9 +5,11 @@ import com.example.cinek.model.trasa.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.repos.StaticDb;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class WalkVerificationServiceImpl implements WalkVerificationService
 {
     @Override

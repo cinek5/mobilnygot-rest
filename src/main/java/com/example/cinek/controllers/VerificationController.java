@@ -3,6 +3,7 @@ package com.example.cinek.controllers;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.trasa.Status;
 import com.example.cinek.model.uzytkownik.Przodownik;
+import com.example.cinek.services.WalkVerificationService;
 import com.example.cinek.services.WalkVerificationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class VerificationController
 {
     @Autowired
-    WalkVerificationServiceImpl walkVerificationService;
+    WalkVerificationService walkVerificationService;
 
     @GetMapping("/znajdztrase")
     @CrossOrigin

@@ -4,12 +4,15 @@ import com.example.cinek.model.trasa.Status;
 import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.uzytkownik.Przodownik;
 
+import java.util.List;
+
 public class TrasaSkladowa
 {
     private Long id;
     private Przodownik verifyPrzodownik;
     private Trasa trasa;
     private Status status;
+    private List<Pamiatka> pamiatki;
 
     public Long getId()
     {
@@ -54,6 +57,16 @@ public class TrasaSkladowa
     @Override
     public boolean equals(Object obj)
     {
-        return id.equals(((TrasaSkladowa)obj).id);
+        return getId().equals(((TrasaSkladowa) obj).getId());
+    }
+
+    public List<Pamiatka> getPamiatki()
+    {
+        return pamiatki;
+    }
+
+    public void setPamiatki(List<Pamiatka> pamiatki)
+    {
+        this.pamiatki = pamiatki;
     }
 }

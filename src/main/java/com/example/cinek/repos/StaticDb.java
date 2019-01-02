@@ -1,6 +1,7 @@
 package com.example.cinek.repos;
 
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
+import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.model.trasa.*;
 import com.example.cinek.model.uzytkownik.Przodownik;
@@ -9,6 +10,7 @@ import com.example.cinek.model.uzytkownik.Turysta;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -42,5 +44,22 @@ public class StaticDb {
         trasyPunktowane.add(trasaPunktowana);
         grupyGorskie.add(grupaGorska);
         punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2));
+        Turysta turysta = new Turysta();
+        turysta.setZgromadzonePunkty(100);
+        Wedrowka w = new Wedrowka();
+        try  {
+            w.setDataWedrowki(sdf.parse("02/10/2018"));
+            TrasaSkladowa ts = new TrasaSkladowa();
+            ts.setStatus(Status.potwierdzona);
+            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", null, grupaGorska,
+                    90, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
+            ArrayList<TrasaSkladowa> tsl = new ArrayList<>();
+            tsl.add(ts);
+            w.setTrasySkladowe(tsl);
+        }
+        catch (Exception e) {}
+        ArrayList<Wedrowka> lw = new ArrayList<>();
+        lw.add(w);
+        turysta.setWedrowki(lw);
     }
 }

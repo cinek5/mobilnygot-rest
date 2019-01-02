@@ -19,7 +19,7 @@ public class RankingController
 
     @GetMapping("/show")
     @CrossOrigin
-    public List<Turysta> getRank(@RequestBody Date startDate, @RequestBody Date endDate, @RequestBody List<GrupaGorska> groups)
+    public List<Turysta> getRank(@RequestBody Date startDate, @RequestBody Date endDate, @RequestBody List<Long> groups)
     {
         return rankingService.getRank(startDate, endDate, groups);
     }

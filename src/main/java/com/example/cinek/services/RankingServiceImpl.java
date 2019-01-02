@@ -6,16 +6,18 @@ import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.model.trasa.Status;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class RankingServiceImpl implements RankingService
 {
     @Override
-    public List<Turysta> getRank(Date startDate, Date endDate, List<GrupaGorska> groups)
+    public List<Turysta> getRank(Date startDate, Date endDate, List<Long> groups)
     {
         List<Turysta> tmpList = new ArrayList<>(StaticDb.turysci);
         for(Turysta t : tmpList)
@@ -29,7 +31,8 @@ public class RankingServiceImpl implements RankingService
                     {
                         if(ts.getStatus().equals(Status.potwierdzona))
                         {
-                            if(groups.contains(ts.getTrasa().getGrupaGorska()))
+                            //TODO
+                            //if(StaticDb.grupyGorskie.contains(ts.getTrasa().getGrupaGorska()))
                             {
                                 points += ts.getTrasa().getLiczbaPunktow();
                             }

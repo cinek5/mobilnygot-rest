@@ -22,4 +22,19 @@ public abstract class Uzytkownik
     {
         return nazwisko;
     }
+
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public void setImie(String imie)
+    {
+        this.imie = imie;
+    }
+
+    public void setNazwisko(String nazwisko)
+    {
+        this.nazwisko = nazwisko;
+    }
 }

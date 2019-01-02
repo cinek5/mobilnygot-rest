@@ -70,4 +70,9 @@ public class Wedrowka
     {
         return trasySkladowe;
     }
+
+    public void setTrasySkladowe(List<TrasaSkladowa> trasySkladowe)
+    {
+        this.trasySkladowe = trasySkladowe;
+    }
 }
