@@ -29,4 +29,10 @@ public class GrupaGorska {
     public void setNazwaGrupy(String nazwaGrupy) {
         this.nazwaGrupy = nazwaGrupy;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return id.equals(((GrupaGorska)obj).id);
+    }
 }

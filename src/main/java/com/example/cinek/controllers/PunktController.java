@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class PunktController {
-
     @GetMapping("/punkt")
     public List<PunktTrasy> getAllPunkty()
     {

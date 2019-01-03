@@ -1,12 +1,13 @@
 package com.example.cinek.model.trasa;
 
+import com.example.cinek.model.grupa.GrupaGorska;
+
 /**
  * Created by Cinek on 27.12.2018.
  */
 public class SkladowyPunktTrasy {
     private PunktTrasy punktTrasy;
     private int kolejnoscPunktu;
-
 
     public SkladowyPunktTrasy() {}
 

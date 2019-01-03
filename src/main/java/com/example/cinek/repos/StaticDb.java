@@ -1,15 +1,15 @@
 package com.example.cinek.repos;
 
+import com.example.cinek.model.Wedrowka.TrasaSkladowa;
+import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.grupa.GrupaGorska;
-import com.example.cinek.model.trasa.PunktTrasy;
-import com.example.cinek.model.trasa.SkladowyPunktTrasy;
-import com.example.cinek.model.trasa.Trasa;
-import com.example.cinek.model.trasa.TrasaPunktowana;
+import com.example.cinek.model.trasa.*;
+import com.example.cinek.model.uzytkownik.Przodownik;
+import com.example.cinek.model.uzytkownik.Turysta;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +23,9 @@ public class StaticDb {
     public static List<TrasaPunktowana> trasyPunktowane = new ArrayList<>();
     public static List<GrupaGorska> grupyGorskie = new ArrayList<>();
     public static List<PunktTrasy> punktyTrasy = new ArrayList<>();
+    public static List<Przodownik> przodownicy = new ArrayList<>();
+    public static List<Turysta> turysci = new ArrayList<>();
+    public static List<TrasaSkladowa> trasySkladowe = new ArrayList<>();
 
     static
     {
@@ -41,5 +44,25 @@ public class StaticDb {
         trasyPunktowane.add(trasaPunktowana);
         grupyGorskie.add(grupaGorska);
         punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2));
+        Turysta turysta = new Turysta();
+        turysta.setZgromadzonePunkty(100);
+        Wedrowka w = new Wedrowka();
+        try  {
+            w.setDataWedrowki(sdf.parse("02/10/2018"));
+            TrasaSkladowa ts = new TrasaSkladowa();
+            ts.setStatus(Status.potwierdzona);
+            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", null, grupaGorska,
+                    90, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
+            ArrayList<TrasaSkladowa> tsl = new ArrayList<>();
+            tsl.add(ts);
+            w.setTrasySkladowe(tsl);
+        }
+        catch (Exception e) {}
+        ArrayList<Wedrowka> lw = new ArrayList<>();
+        lw.add(w);
+        turysta.setWedrowki(lw);
+        turysta.setImie("Janusz");
+        turysta.setNazwisko("Pawlacz");
+        turysci.add(turysta);
     }
 }
