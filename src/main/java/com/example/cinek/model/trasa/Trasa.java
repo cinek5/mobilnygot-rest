@@ -1,17 +1,29 @@
 package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.List;
 
 /**
  * Created by Cinek on 27.12.2018.
  */
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = TrasaPunktowana.class, name = "TrasaPunktowana"),
+        @JsonSubTypes.Type(value = TrasaNiepunktowana.class, name = "TrasaNiepunktowana")
+})
 public abstract class Trasa {
     private Long id;
     private List<SkladowyPunktTrasy> skladowePunktyTrasy;
     private GrupaGorska grupaGorska;
 
+    public Trasa(){}
 
     public Trasa(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska) {
         this.id = id;

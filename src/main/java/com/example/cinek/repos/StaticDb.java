@@ -61,5 +61,8 @@ public class StaticDb {
         ArrayList<Wedrowka> lw = new ArrayList<>();
         lw.add(w);
         turysta.setWedrowki(lw);
+        turysta.setImie("Janusz");
+        turysta.setNazwisko("Pawlacz");
+        turysci.add(turysta);
     }
 }

@@ -11,7 +11,7 @@ public class Wedrowka
     private Long turystaId;
     private String nazwaWedrowki;
     @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataWedrowki;
     private Integer punktyZaWedrowke;
     private List<TrasaSkladowa> trasySkladowe;

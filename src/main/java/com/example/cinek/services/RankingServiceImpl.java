@@ -8,6 +8,7 @@ import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -17,15 +18,28 @@ import java.util.List;
 public class RankingServiceImpl implements RankingService
 {
     @Override
-    public List<Turysta> getRank(Date startDate, Date endDate, List<Long> groups)
+    public List<Turysta> getRank(String startDate, String endDate, List<Long> groups)
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Date sd, ed;
+        try
+        {
+            sd = sdf.parse(startDate);
+            ed = sdf.parse(endDate);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
         List<Turysta> tmpList = new ArrayList<>(StaticDb.turysci);
         for(Turysta t : tmpList)
         {
             int points = 0;
             for(Wedrowka w : t.getWedrowki())
             {
-                if(w.getDataWedrowki().after(startDate) && w.getDataWedrowki().before(endDate))
+                if(w.getDataWedrowki().after(sd) && w.getDataWedrowki().before(ed))
                 {
                     for(TrasaSkladowa ts : w.getTrasySkladowe())
                     {

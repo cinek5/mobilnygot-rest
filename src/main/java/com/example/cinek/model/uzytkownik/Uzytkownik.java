@@ -1,7 +1,19 @@
 package com.example.cinek.model.uzytkownik;
 
 import com.example.cinek.model.grupa.GrupaGorska;
+import com.example.cinek.model.trasa.TrasaNiepunktowana;
+import com.example.cinek.model.trasa.TrasaPunktowana;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Turysta.class, name = "Turysta"),
+        @JsonSubTypes.Type(value = Przodownik.class, name = "Przodownik")
+})
 public abstract class Uzytkownik
 {
     private Long id;
