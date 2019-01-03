@@ -33,17 +33,36 @@ public class StaticDb {
         GrupaGorska grupaGorska = new GrupaGorska(new Long(1),"Tatry");
         PunktTrasy punktTrasy1 = new PunktTrasy(new Long(1), "Punkt1", 200, 48,39  );
         PunktTrasy punktTrasy2 = new PunktTrasy(new Long(2), "Punkt2", 300, 58,49  );
+        PunktTrasy punktTrasy3 = new PunktTrasy(new Long(3), "Punkt3", 234, 38,42  );
+        PunktTrasy punktTrasy4 = new PunktTrasy(new Long(3), "Punkt4", 666, 47,29  );
         SkladowyPunktTrasy skladowyPunktTrasy1 = new SkladowyPunktTrasy(punktTrasy1, 1);
         SkladowyPunktTrasy skladowyPunktTrasy2 = new SkladowyPunktTrasy(punktTrasy2, 2);
-        TrasaPunktowana trasaPunktowana = null;
+        SkladowyPunktTrasy skladowyPunktTrasy3 = new SkladowyPunktTrasy(punktTrasy3, 1);
+        SkladowyPunktTrasy skladowyPunktTrasy4 = new SkladowyPunktTrasy(punktTrasy4, 2);
+        TrasaPunktowana trasaPunktowana1 = null;
+        TrasaPunktowana trasaPunktowana2 = null;
         try {
-           trasaPunktowana = new TrasaPunktowana(new Long(1), "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
+           trasaPunktowana1 = new TrasaPunktowana(1L, "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
                     sdf.parse("02/10/2018"), null);
+            trasaPunktowana2 = new TrasaPunktowana(3L, "Trasa króla", asList(skladowyPunktTrasy3, skladowyPunktTrasy4), grupaGorska, 676,
+                    sdf.parse("04/11/2018"), null);
         } catch (ParseException ex) {}
-        trasy.add(trasaPunktowana);
-        trasyPunktowane.add(trasaPunktowana);
+        trasy.addAll(asList(trasaPunktowana1, trasaPunktowana2));
+        trasyPunktowane.addAll(asList(trasaPunktowana1,trasaPunktowana2));
         grupyGorskie.add(grupaGorska);
-        punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2));
+        punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2, punktTrasy3, punktTrasy4));
+
+
+
+
+
+
+
+
+
+
+
+
         Turysta turysta = new Turysta();
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();

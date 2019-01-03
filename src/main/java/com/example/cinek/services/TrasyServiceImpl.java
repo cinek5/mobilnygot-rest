@@ -32,12 +32,12 @@ public class TrasyServiceImpl implements TrasyService {
     }
 
     @Override
-    public void updateTrasaPunktowana(Long id, TrasaPunktowana trasaPunktowana) {
+    public void updateTrasaPunktowana(Long id, TrasaPunktowana trasaPunktowana, Date dataModyfikacji) {
         TrasaPunktowana oldTrasa = getTrasaPunktowanaById(id);
         if (oldTrasa!=null) {
             trasaPunktowana.setPoprzedniaWersjaId(oldTrasa.getId());
-            insertTrasaPunktowanaToDb(trasaPunktowana);
-            deleteTrasaPunktowana(id);
+            insertTrasaPunktowanaToDb(trasaPunktowana, dataModyfikacji);
+            deleteTrasaPunktowana(id, dataModyfikacji);
         }
 
 
@@ -45,22 +45,22 @@ public class TrasyServiceImpl implements TrasyService {
 
     @Override
     public void insertTrasaPunktowana(TrasaPunktowana trasaPunktowana) {
-        insertTrasaPunktowanaToDb(trasaPunktowana);
+        insertTrasaPunktowanaToDb(trasaPunktowana, new Date());
     }
 
-    private void insertTrasaPunktowanaToDb(TrasaPunktowana trasaPunktowana)
+    private void insertTrasaPunktowanaToDb(TrasaPunktowana trasaPunktowana, Date dataDodania)
     {
         trasaPunktowana.setId(new Long(StaticDb.trasyPunktowane.size()+1));
-        trasaPunktowana.setDataDodania(new Date());
+        trasaPunktowana.setDataDodania(dataDodania);
         StaticDb.trasyPunktowane.add(trasaPunktowana);
     }
 
     @Override
-    public void deleteTrasaPunktowana(Long id) {
+    public void deleteTrasaPunktowana(Long id, Date dataUsuniecia) {
         TrasaPunktowana trasaPunktowana = getTrasaPunktowanaById(id);
         if (trasaPunktowana!=null)
         {
-            trasaPunktowana.setDataUsuniecia(new Date());
+            trasaPunktowana.setDataUsuniecia(dataUsuniecia);
         }
     }
 }
