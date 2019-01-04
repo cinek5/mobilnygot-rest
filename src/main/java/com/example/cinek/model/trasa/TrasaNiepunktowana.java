@@ -9,12 +9,14 @@ import java.util.List;
  */
 public class TrasaNiepunktowana extends Trasa{
     public TrasaNiepunktowana() {}
-    public TrasaNiepunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska) {
-        super(id, skladowePunktyTrasy, grupaGorska);
+
+    public TrasaNiepunktowana(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer points) {
+        super(id, skladowePunktyTrasy, grupaGorska, points);
     }
 
     @Override
-    public int getLiczbaPunktow() {
-        return 0;
+    public int getGetPointsCount()
+    {
+        return getPunktyRegulaminowe();
     }
 }

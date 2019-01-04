@@ -24,6 +24,7 @@ public class StaticDb {
     public static List<GrupaGorska> grupyGorskie = new ArrayList<>();
     public static List<PunktTrasy> punktyTrasy = new ArrayList<>();
     public static List<Przodownik> przodownicy = new ArrayList<>();
+    public static List<Wedrowka> wedrowki = new ArrayList<>();
     public static List<Turysta> turysci = new ArrayList<>();
     public static List<TrasaSkladowa> trasySkladowe = new ArrayList<>();
 
@@ -47,22 +48,37 @@ public class StaticDb {
         Turysta turysta = new Turysta();
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();
+        List<SkladowyPunktTrasy> skladowePunktyTrasy = new ArrayList<SkladowyPunktTrasy>()
+                                                                {{add(skladowyPunktTrasy1); add(skladowyPunktTrasy2);}};
         try  {
             w.setDataWedrowki(sdf.parse("02/10/2018"));
             TrasaSkladowa ts = new TrasaSkladowa();
-            ts.setStatus(Status.potwierdzona);
-            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", null, grupaGorska,
+            ts.setId(1L);
+            trasySkladowe.add(ts);
+            ts.setStatus(Status.oczekujaca);
+            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
                     90, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
             ArrayList<TrasaSkladowa> tsl = new ArrayList<>();
             tsl.add(ts);
-            w.setTrasySkladowe(tsl);
+            TrasaSkladowa ts2 = new TrasaSkladowa();
+            ts.setId(2L);
+            trasySkladowe.add(ts);
+            ts.setStatus(Status.potwierdzona);
+            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
+                    60, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
+            w.setTrasySkladowe(new ArrayList<TrasaSkladowa>() {{add(ts); add(ts2);}});
         }
         catch (Exception e) {}
         ArrayList<Wedrowka> lw = new ArrayList<>();
         lw.add(w);
+        w.setId(1L);
         turysta.setWedrowki(lw);
         turysta.setImie("Janusz");
         turysta.setNazwisko("Pawlacz");
         turysci.add(turysta);
+        wedrowki.add(w);
+        Przodownik przodownik = new Przodownik();
+        przodownik.setId(1L);
+        przodownicy.add(przodownik);
     }
 }

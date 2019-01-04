@@ -2,7 +2,6 @@ package com.example.cinek.services;
 
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.model.trasa.Status;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
@@ -45,10 +44,9 @@ public class RankingServiceImpl implements RankingService
                     {
                         if(ts.getStatus().equals(Status.potwierdzona))
                         {
-                            //TODO
-                            //if(StaticDb.grupyGorskie.contains(ts.getTrasa().getGrupaGorska()))
+                            if(groups.contains(ts.getTrasa().getGrupaGorska().getId()))
                             {
-                                points += ts.getTrasa().getLiczbaPunktow();
+                                points += ts.getTrasa().getPunktyRegulaminowe();
                             }
                         }
                     }

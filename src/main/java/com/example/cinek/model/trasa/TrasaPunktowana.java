@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class TrasaPunktowana extends Trasa {
     private String nazwa;
-    private Integer liczbaPunktow;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataDodania;
@@ -22,10 +21,9 @@ public class TrasaPunktowana extends Trasa {
 
     public TrasaPunktowana() {}
 
-    public TrasaPunktowana(Long id, String nazwa, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
-        super(id, skladowePunktyTrasy, grupaGorska);
+    public TrasaPunktowana(Long id, String nazwa, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer punktyRegulaminowe, Date dataDodania, Date dataUsuniecia) {
+        super(id, skladowePunktyTrasy, grupaGorska, punktyRegulaminowe);
         this.nazwa = nazwa;
-        this.liczbaPunktow = liczbaPunktow;
         this.dataDodania = dataDodania;
         this.dataUsuniecia = dataUsuniecia;
     }
@@ -36,10 +34,6 @@ public class TrasaPunktowana extends Trasa {
 
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
-    }
-
-    public void setLiczbaPunktow(Integer liczbaPunktow) {
-        this.liczbaPunktow = liczbaPunktow;
     }
 
     public void setDataDodania(Date dataDodania) {
@@ -59,16 +53,14 @@ public class TrasaPunktowana extends Trasa {
     }
 
     @Override
-    public int getLiczbaPunktow() {
-        return liczbaPunktow;
+    public int getGetPointsCount() {
+        return getPunktyRegulaminowe();
     }
+
     public Date getDataDodania() {
         return dataDodania;
     }
     public Date getDataUsuniecia() {
         return dataUsuniecia;
-    }
-    public void setLiczbaPunktow(int liczbaPunktow) {
-        this.liczbaPunktow = liczbaPunktow;
     }
 }
