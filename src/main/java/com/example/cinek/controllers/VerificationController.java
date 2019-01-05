@@ -23,11 +23,10 @@ public class VerificationController
 
     @GetMapping("/ustaw_status/{id}/{status}/{przodownikId}/{points}")
     @CrossOrigin
-    public Integer setStatus(@PathVariable("id") long id, @PathVariable("status") String status,
+    public void setStatus(@PathVariable("id") long id, @PathVariable("status") String status,
                           @PathVariable("przodownikId") Long przodownikId, @PathVariable("points") Integer points)
     {
         Status stat = Enum.valueOf(Status.class, status);
         walkVerificationService.setStatus(id, stat, przodownikId, points);
-        return 666;
     }
 }

@@ -45,27 +45,23 @@ public class StaticDb {
         trasyPunktowane.add(trasaPunktowana);
         grupyGorskie.add(grupaGorska);
         punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2));
-        Turysta turysta = new Turysta();
+        Turysta turysta = new Turysta() {{setId(1L);}};
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();
         List<SkladowyPunktTrasy> skladowePunktyTrasy = new ArrayList<SkladowyPunktTrasy>()
                                                                 {{add(skladowyPunktTrasy1); add(skladowyPunktTrasy2);}};
         try  {
             w.setDataWedrowki(sdf.parse("02/10/2018"));
-            TrasaSkladowa ts = new TrasaSkladowa();
-            ts.setId(1L);
+            TrasaSkladowa ts = new TrasaSkladowa() {{setId(1L);}};
             trasySkladowe.add(ts);
             ts.setStatus(Status.oczekujaca);
-            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
+            ts.setTrasa(new TrasaPunktowana(1L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
                     90, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
-            ArrayList<TrasaSkladowa> tsl = new ArrayList<>();
-            tsl.add(ts);
-            TrasaSkladowa ts2 = new TrasaSkladowa();
-            ts.setId(2L);
-            trasySkladowe.add(ts);
-            ts.setStatus(Status.potwierdzona);
-            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
-                    60, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
+            TrasaSkladowa ts2 = new TrasaSkladowa() {{setId(2L);}};
+            ts2.setStatus(Status.oczekujaca);
+            ts2.setTrasa(new TrasaPunktowana(2L, "W te i w tamte", skladowePunktyTrasy, grupaGorska,
+                    130, sdf.parse("02/10/2015"), sdf.parse("02/10/2016")));
+            trasySkladowe.add(ts2);
             w.setTrasySkladowe(new ArrayList<TrasaSkladowa>() {{add(ts); add(ts2);}});
         }
         catch (Exception e) {}
@@ -74,7 +70,7 @@ public class StaticDb {
         w.setId(1L);
         turysta.setWedrowki(lw);
         turysta.setImie("Janusz");
-        turysta.setNazwisko("Pawlacz");
+        turysta.setNazwisko("Piotrowski");
         turysci.add(turysta);
         wedrowki.add(w);
         Przodownik przodownik = new Przodownik();

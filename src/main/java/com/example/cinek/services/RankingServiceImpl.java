@@ -1,5 +1,6 @@
 package com.example.cinek.services;
 
+import com.example.cinek.model.DTO.RankList;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.trasa.Status;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class RankingServiceImpl implements RankingService
 {
     @Override
-    public List<Turysta> getRank(String startDate, String endDate, List<Long> groups)
+    public RankList getRank(Long id, String startDate, String endDate, List<Long> groups)
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Date sd, ed;
@@ -55,19 +55,19 @@ public class RankingServiceImpl implements RankingService
             t.setZgromadzonePunkty(points);
         }
 
-        tmpList.sort(new Comparator<Turysta>()
+        tmpList.sort((o1, o2) -> o2.getZgromadzonePunkty().compareTo(o1.getZgromadzonePunkty()));
+
+        RankList rankList = new RankList(tmpList.size());
+        for(int i = 0; i < tmpList.size(); i++)
         {
-            @Override
-            public int compare(Turysta o1, Turysta o2)
-            {
-                return o2.getZgromadzonePunkty().compareTo(o1.getZgromadzonePunkty());
-            }
-        });
-        return tmpList;
+            rankList.getNames().add(tmpList.get(i).getImie() + " " + tmpList.get(i).getNazwisko().substring(0, 1) + ".");
+            rankList.getPoints().add(tmpList.get(i).getZgromadzonePunkty());
+        }
+        rankList.setReqTouristPosition(getPositionInList(tmpList, id));
+        return rankList;
     }
 
-    @Override
-    public int getPositionInList(List<Turysta> list, Long userId)
+    private int getPositionInList(List<Turysta> list, Long userId)
     {
         for(int i = 0; i < list.size(); i++)
         {
