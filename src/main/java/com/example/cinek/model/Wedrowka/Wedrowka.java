@@ -1,19 +1,30 @@
 package com.example.cinek.model.Wedrowka;
 
+import com.example.cinek.model.uzytkownik.Turysta;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Wedrowka
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long turystaId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Turysta turysta;
+    @Length(max = 40)
     private String nazwaWedrowki;
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat
     private Date dataWedrowki;
     private Integer punktyZaWedrowke;
+    @OneToMany(mappedBy = "wedrowka",cascade = CascadeType.ALL)
     private List<TrasaSkladowa> trasySkladowe;
 
     public Long getId()
@@ -26,14 +37,14 @@ public class Wedrowka
         this.id = id;
     }
 
-    public Long getTurystaId()
+    public Turysta getTurysta()
     {
-        return turystaId;
+        return turysta;
     }
 
-    public void setTurystaId(Long turystaId)
+    public void setTurysta(Turysta turysta)
     {
-        this.turystaId = turystaId;
+        this.turysta = turysta;
     }
 
     public String getNazwaWedrowki()

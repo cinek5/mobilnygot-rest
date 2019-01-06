@@ -1,9 +1,13 @@
 package com.example.cinek.services;
 
 import com.example.cinek.exceptions.TrasaNotFoundException;
-import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.DTO.PathToVerify;
+import com.example.cinek.model.Wedrowka.Wedrowka;
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
+import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Przodownik;
+import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +17,40 @@ import java.util.Optional;
 public class WalkVerificationServiceImpl implements WalkVerificationService
 {
     @Override
-    public TrasaSkladowa getTrasaToVerification(Przodownik przodownik)
+    public PathToVerify getPathToVerify(Przodownik przodownik)
     {
         Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null
                         && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
-        return trasaPunktowanaOptional.orElse(null);
+
+        if(trasaPunktowanaOptional.isPresent())
+        {
+            Optional<Wedrowka> wedrowkaOptional = StaticDb.wedrowki.stream()
+                    .filter(w -> w.getTrasySkladowe().contains(trasaPunktowanaOptional.get())).findAny();
+
+            Optional<Turysta> turystaOptional = StaticDb.turysci.stream()
+                    .filter(t -> t.getWedrowki().contains(wedrowkaOptional.get())).findAny();
+
+            return new PathToVerify(turystaOptional.get(), wedrowkaOptional.get(), trasaPunktowanaOptional.get());
+        }
+        return null;
     }
 
     @Override
-    public void setStatus(Long id, Status status)
+    public void setStatus(Long id, Status status, Long przodownikId, Integer points)
     {
         Optional<TrasaSkladowa> trasaSkladowaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getId().equals(id)).findAny();
         if (trasaSkladowaOptional.isPresent())
         {
             trasaSkladowaOptional.get().setStatus(status);
+            if(trasaSkladowaOptional.get().getTrasa() instanceof TrasaNiepunktowana)
+            {
+                trasaSkladowaOptional.get().getTrasa().setPunktyRegulaminowe(points);
+            }
+            Optional<Przodownik> przodownikOptional = StaticDb.przodownicy.stream()
+                    .filter(p -> p.getId().equals(przodownikId)).findAny();
+            przodownikOptional.ifPresent(przodownik -> trasaSkladowaOptional.get().setVerifyPrzodownik(przodownikOptional.get()));
         }
         else
         {

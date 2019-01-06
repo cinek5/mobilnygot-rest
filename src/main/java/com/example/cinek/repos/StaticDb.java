@@ -1,5 +1,6 @@
 package com.example.cinek.repos;
 
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.grupa.GrupaGorska;
@@ -26,6 +27,7 @@ public class StaticDb {
     public static List<GrupaGorska> grupyGorskie = new ArrayList<>();
     public static List<PunktTrasy> punktyTrasy = new ArrayList<>();
     public static List<Przodownik> przodownicy = new ArrayList<>();
+    public static List<Wedrowka> wedrowki = new ArrayList<>();
     public static List<Turysta> turysci = new ArrayList<>();
     public static List<TrasaSkladowa> trasySkladowe = new ArrayList<>();
 
@@ -52,6 +54,7 @@ public class StaticDb {
         trasy.addAll(asList(trasaPunktowana1, trasaPunktowana2));
         trasyPunktowane.addAll(asList(trasaPunktowana1,trasaPunktowana2));
         grupyGorskie.add(grupaGorska);
+        Turysta turysta = new Turysta() {{setId(1L);}};
         punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2, punktTrasy3, punktTrasy4));
 
 
@@ -68,22 +71,33 @@ public class StaticDb {
         Turysta turysta = new Turysta();
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();
+        List<SkladowyPunktTrasy> skladowePunktyTrasy = new ArrayList<SkladowyPunktTrasy>()
+                                                                {{add(skladowyPunktTrasy1); add(skladowyPunktTrasy2);}};
         try  {
             w.setDataWedrowki(sdf.parse("02/10/2018"));
-            TrasaSkladowa ts = new TrasaSkladowa();
-            ts.setStatus(Status.potwierdzona);
-            ts.setTrasa(new TrasaPunktowana(2L, "W te i nazad", null, grupaGorska,
+            TrasaSkladowa ts = new TrasaSkladowa() {{setId(1L);}};
+            trasySkladowe.add(ts);
+            ts.setStatus(Status.oczekujaca);
+            ts.setTrasa(new TrasaPunktowana(1L, "W te i nazad", skladowePunktyTrasy, grupaGorska,
                     90, sdf.parse("02/10/2018"), sdf.parse("02/10/2018")));
-            ArrayList<TrasaSkladowa> tsl = new ArrayList<>();
-            tsl.add(ts);
-            w.setTrasySkladowe(tsl);
+            TrasaSkladowa ts2 = new TrasaSkladowa() {{setId(2L);}};
+            ts2.setStatus(Status.oczekujaca);
+            ts2.setTrasa(new TrasaPunktowana(2L, "W te i w tamte", skladowePunktyTrasy, grupaGorska,
+                    130, sdf.parse("02/10/2015"), sdf.parse("02/10/2016")));
+            trasySkladowe.add(ts2);
+            w.setTrasySkladowe(new ArrayList<TrasaSkladowa>() {{add(ts); add(ts2);}});
         }
         catch (Exception e) {}
         ArrayList<Wedrowka> lw = new ArrayList<>();
         lw.add(w);
+        w.setId(1L);
         turysta.setWedrowki(lw);
         turysta.setImie("Janusz");
-        turysta.setNazwisko("Pawlacz");
+        turysta.setNazwisko("Piotrowski");
         turysci.add(turysta);
+        wedrowki.add(w);
+        Przodownik przodownik = new Przodownik();
+        przodownik.setId(1L);
+        przodownicy.add(przodownik);
     }
 }

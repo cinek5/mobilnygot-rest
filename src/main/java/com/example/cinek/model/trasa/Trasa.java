@@ -1,10 +1,12 @@
 package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -18,20 +20,32 @@ import java.util.List;
         @JsonSubTypes.Type(value = TrasaPunktowana.class, name = "TrasaPunktowana"),
         @JsonSubTypes.Type(value = TrasaNiepunktowana.class, name = "TrasaNiepunktowana")
 })
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "typ_trasy")
 public abstract class Trasa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @OneToMany(mappedBy = "trasa",cascade = CascadeType.ALL)
     private List<SkladowyPunktTrasy> skladowePunktyTrasy;
+    @OneToOne
+    @NotEmpty
     private GrupaGorska grupaGorska;
+    @NotEmpty
+    private Integer punktyRegulaminowe;
+
 
     public Trasa(){}
 
-    public Trasa(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska) {
+    public Trasa(Long id, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer punktyRegulaminowe) {
         this.id = id;
         this.skladowePunktyTrasy = skladowePunktyTrasy;
         this.grupaGorska = grupaGorska;
+        this.punktyRegulaminowe = punktyRegulaminowe;
     }
 
-    public abstract int getLiczbaPunktow();
+    public abstract int getGetPointsCount();
 
     public List<SkladowyPunktTrasy> getSkladowePunktyTrasy() {
         return skladowePunktyTrasy;
@@ -61,5 +75,15 @@ public abstract class Trasa {
     public boolean equals(Object obj)
     {
         return id.equals(((Trasa)obj).id);
+    }
+
+    public void setPunktyRegulaminowe(Integer punktyRegulaminowe)
+    {
+        this.punktyRegulaminowe = punktyRegulaminowe;
+    }
+
+    public Integer getPunktyRegulaminowe()
+    {
+        return punktyRegulaminowe;
     }
 }

@@ -2,11 +2,19 @@ package com.example.cinek.model.uzytkownik;
 
 import com.example.cinek.model.Wedrowka.Wedrowka;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@Entity
 public class Turysta extends Uzytkownik
 {
+    @NotEmpty
     private Integer zgromadzonePunkty;
+    @OneToMany(mappedBy = "turysta", cascade = CascadeType.ALL)
     private List<Wedrowka> wedrowki;
 
     public Integer getZgromadzonePunkty()

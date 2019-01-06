@@ -2,30 +2,37 @@ package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Cinek on 27.12.2018.
  */
+@Entity
+@DiscriminatorValue("p")
 public class TrasaPunktowana extends Trasa {
+    @Length(max = 40)
     private String nazwa;
-    private Integer liczbaPunktow;
-    @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat
     private Date dataDodania;
-    @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat
     private Date dataUsuniecia;
     private Long poprzedniaWersjaId;
 
     public TrasaPunktowana() {}
 
-    public TrasaPunktowana(Long id, String nazwa, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer liczbaPunktow, Date dataDodania, Date dataUsuniecia) {
-        super(id, skladowePunktyTrasy, grupaGorska);
+    public TrasaPunktowana(Long id, String nazwa, List<SkladowyPunktTrasy> skladowePunktyTrasy, GrupaGorska grupaGorska, Integer punktyRegulaminowe, Date dataDodania, Date dataUsuniecia) {
+        super(id, skladowePunktyTrasy, grupaGorska, punktyRegulaminowe);
         this.nazwa = nazwa;
-        this.liczbaPunktow = liczbaPunktow;
         this.dataDodania = dataDodania;
         this.dataUsuniecia = dataUsuniecia;
     }
@@ -36,10 +43,6 @@ public class TrasaPunktowana extends Trasa {
 
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
-    }
-
-    public void setLiczbaPunktow(Integer liczbaPunktow) {
-        this.liczbaPunktow = liczbaPunktow;
     }
 
     public void setDataDodania(Date dataDodania) {
@@ -59,16 +62,14 @@ public class TrasaPunktowana extends Trasa {
     }
 
     @Override
-    public int getLiczbaPunktow() {
-        return liczbaPunktow;
+    public int getGetPointsCount() {
+        return getPunktyRegulaminowe();
     }
+
     public Date getDataDodania() {
         return dataDodania;
     }
     public Date getDataUsuniecia() {
         return dataUsuniecia;
-    }
-    public void setLiczbaPunktow(int liczbaPunktow) {
-        this.liczbaPunktow = liczbaPunktow;
     }
 }

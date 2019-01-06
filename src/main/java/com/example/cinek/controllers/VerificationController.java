@@ -1,10 +1,9 @@
 package com.example.cinek.controllers;
 
-import com.example.cinek.model.Wedrowka.TrasaSkladowa;
-import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.DTO.PathToVerify;
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.services.WalkVerificationService;
-import com.example.cinek.services.WalkVerificationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +14,19 @@ public class VerificationController
     @Autowired
     WalkVerificationService walkVerificationService;
 
-    @GetMapping("/znajdztrase")
+    @GetMapping("/znajdz_trase")
     @CrossOrigin
-    public TrasaSkladowa getTrasaToVerification(@RequestBody Przodownik przodownik)
+    public PathToVerify getTrasaToVerification(@RequestBody Przodownik przodownik)
     {
-        return walkVerificationService.getTrasaToVerification(przodownik);
+        return walkVerificationService.getPathToVerify(przodownik);
     }
 
-    @GetMapping("/ustaw_status/{id}/{status}")
+    @GetMapping("/ustaw_status/{id}/{status}/{przodownikId}/{points}")
     @CrossOrigin
-    public void setStatus(@PathVariable("id") long id, @PathVariable("status") String status)
+    public void setStatus(@PathVariable("id") long id, @PathVariable("status") String status,
+                          @PathVariable("przodownikId") Long przodownikId, @PathVariable("points") Integer points)
     {
         Status stat = Enum.valueOf(Status.class, status);
-        walkVerificationService.setStatus(id, stat);
+        walkVerificationService.setStatus(id, stat, przodownikId, points);
     }
 }
