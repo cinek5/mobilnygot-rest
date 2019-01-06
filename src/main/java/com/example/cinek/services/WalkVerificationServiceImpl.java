@@ -3,7 +3,7 @@ package com.example.cinek.services;
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.DTO.PathToVerify;
 import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Przodownik;

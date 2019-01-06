@@ -2,20 +2,29 @@ package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Cinek on 27.12.2018.
  */
+@Entity
+@DiscriminatorValue("p")
 public class TrasaPunktowana extends Trasa {
+    @Length(max = 40)
     private String nazwa;
-    @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat
     private Date dataDodania;
-    @JsonFormat
-            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat
     private Date dataUsuniecia;
     private Long poprzedniaWersjaId;
 

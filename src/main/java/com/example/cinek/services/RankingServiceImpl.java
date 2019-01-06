@@ -3,7 +3,7 @@ package com.example.cinek.services;
 import com.example.cinek.model.DTO.RankList;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import org.springframework.stereotype.Service;

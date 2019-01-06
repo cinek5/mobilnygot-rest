@@ -1,16 +1,30 @@
 package com.example.cinek.model.trasa;
 
-import com.example.cinek.model.grupa.GrupaGorska;
-import com.sun.javafx.beans.IDProperty;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.Entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * Created by Cinek on 27.12.2018.
  */
+@Entity
 public class PunktTrasy {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotEmpty
+    @Length(max = 40)
     private String nazwaPunktu;
+    @NotEmpty
     private Integer wysokosc;
+    @NotEmpty
     private Integer wysokoscGeograficzna;
+    @NotEmpty
     private Integer szerokoscGeograficzna;
 
     public PunktTrasy(){}

@@ -1,7 +1,7 @@
 package com.example.cinek.controllers;
 
 import com.example.cinek.model.DTO.PathToVerify;
-import com.example.cinek.model.trasa.Status;
+import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.services.WalkVerificationService;
 import org.springframework.beans.factory.annotation.Autowired;

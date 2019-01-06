@@ -1,12 +1,22 @@
 package com.example.cinek.model.trasa;
 
-import com.example.cinek.model.grupa.GrupaGorska;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 /**
  * Created by Cinek on 27.12.2018.
  */
-public class SkladowyPunktTrasy {
+@Entity
+public class SkladowyPunktTrasy implements Serializable
+{
+    @Id
+    @OneToOne
     private PunktTrasy punktTrasy;
+    @Id
+    @ManyToOne
+    private Trasa trasa;
+    @NotEmpty
     private int kolejnoscPunktu;
 
     public SkladowyPunktTrasy() {}
@@ -30,5 +40,15 @@ public class SkladowyPunktTrasy {
 
     public void setKolejnoscPunktu(int kolejnoscPunktu) {
         this.kolejnoscPunktu = kolejnoscPunktu;
+    }
+
+    public Trasa getTrasa()
+    {
+        return trasa;
+    }
+
+    public void setTrasa(Trasa trasa)
+    {
+        this.trasa = trasa;
     }
 }

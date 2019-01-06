@@ -1,10 +1,13 @@
 package com.example.cinek.model.uzytkownik;
 
-import com.example.cinek.model.grupa.GrupaGorska;
-import com.example.cinek.model.trasa.TrasaNiepunktowana;
-import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotEmpty;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -14,10 +17,15 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = Turysta.class, name = "Turysta"),
         @JsonSubTypes.Type(value = Przodownik.class, name = "Przodownik")
 })
+@MappedSuperclass
 public abstract class Uzytkownik
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotEmpty
     private String imie;
+    @NotEmpty
     private String nazwisko;
 
     public Long getId()
