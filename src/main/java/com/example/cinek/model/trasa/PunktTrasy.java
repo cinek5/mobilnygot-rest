@@ -1,8 +1,5 @@
 package com.example.cinek.model.trasa;
 
-import com.example.cinek.model.grupa.GrupaGorska;
-import com.sun.javafx.beans.IDProperty;
-
 /**
  * Created by Cinek on 27.12.2018.
  */
@@ -10,12 +7,12 @@ public class PunktTrasy {
     private Long id;
     private String nazwaPunktu;
     private Integer wysokosc;
-    private Integer wysokoscGeograficzna;
-    private Integer szerokoscGeograficzna;
+    private Float wysokoscGeograficzna;
+    private Float szerokoscGeograficzna;
 
     public PunktTrasy(){}
 
-    public PunktTrasy(Long id, String nazwaPunktu, Integer wysokosc, Integer wysokoscGeograficzna, Integer szerokoscGeograficzna) {
+    public PunktTrasy(Long id, String nazwaPunktu, Integer wysokosc, Float wysokoscGeograficzna, Float szerokoscGeograficzna) {
         this.id = id;
         this.nazwaPunktu = nazwaPunktu;
         this.wysokosc = wysokosc;
@@ -47,19 +44,19 @@ public class PunktTrasy {
         this.wysokosc = wysokosc;
     }
 
-    public Integer getWysokoscGeograficzna() {
+    public Float getWysokoscGeograficzna() {
         return wysokoscGeograficzna;
     }
 
-    public void setWysokoscGeograficzna(Integer wysokoscGeograficzna) {
+    public void setWysokoscGeograficzna(Float wysokoscGeograficzna) {
         this.wysokoscGeograficzna = wysokoscGeograficzna;
     }
 
-    public Integer getSzerokoscGeograficzna() {
+    public Float getSzerokoscGeograficzna() {
         return szerokoscGeograficzna;
     }
 
-    public void setSzerokoscGeograficzna(Integer szerokoscGeograficzna) {
+    public void setSzerokoscGeograficzna(Float szerokoscGeograficzna) {
         this.szerokoscGeograficzna = szerokoscGeograficzna;
     }
 

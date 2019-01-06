@@ -10,7 +10,6 @@ import com.example.cinek.model.uzytkownik.Turysta;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -34,10 +33,10 @@ public class StaticDb {
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         GrupaGorska grupaGorska = new GrupaGorska(1l,"Tatry");
-        PunktTrasy punktTrasy1 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt1", 200, 48,39  );
-        PunktTrasy punktTrasy2 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt2", 300, 58,49  );
-        PunktTrasy punktTrasy3 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt3", 234, 38,42  );
-        PunktTrasy punktTrasy4 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt4", 666, 47,29  );
+        PunktTrasy punktTrasy1 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt1", 200, 48f,39f  );
+        PunktTrasy punktTrasy2 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt2", 300, 58f,49f  );
+        PunktTrasy punktTrasy3 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt3", 234, 38f,42f );
+        PunktTrasy punktTrasy4 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt4", 666, 47f,29f  );
         SkladowyPunktTrasy skladowyPunktTrasy1 = new SkladowyPunktTrasy(punktTrasy1, 1);
         SkladowyPunktTrasy skladowyPunktTrasy2 = new SkladowyPunktTrasy(punktTrasy2, 2);
         SkladowyPunktTrasy skladowyPunktTrasy3 = new SkladowyPunktTrasy(punktTrasy3, 1);
