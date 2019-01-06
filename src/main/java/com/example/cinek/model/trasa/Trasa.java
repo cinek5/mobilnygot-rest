@@ -4,9 +4,10 @@ import com.example.cinek.model.grupa.GrupaGorska;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
 import java.util.List;
 
 /**

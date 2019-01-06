@@ -66,9 +66,6 @@ public class StaticDb {
 
 
 
-
-
-        Turysta turysta = new Turysta();
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();
         List<SkladowyPunktTrasy> skladowePunktyTrasy = new ArrayList<SkladowyPunktTrasy>()
