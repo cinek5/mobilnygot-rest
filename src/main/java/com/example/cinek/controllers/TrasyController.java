@@ -1,12 +1,18 @@
 package com.example.cinek.controllers;
 
+import com.example.cinek.Utils;
+import com.example.cinek.exceptions.TrasaAlreadyDeletedException;
 import com.example.cinek.exceptions.TrasaNotFoundException;
+import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.example.cinek.services.TrasyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+
+import static com.example.cinek.Utils.getDateFromString;
 
 /**
  * Created by Cinek on 27.12.2018.
@@ -38,10 +44,11 @@ public class TrasyController {
         }
     }
     @PutMapping("/punktowana/{id}")
-    public void updateTrasaPunktowana(@PathVariable("id") long id, @RequestBody TrasaPunktowana trasaPunktowana) {
+    @CrossOrigin
+    public void updateTrasaPunktowana(@PathVariable("id") long id, @RequestBody TrasaPunktowana trasaPunktowana, @RequestParam String dataUsuniecia) {
         if (trasyService.getTrasaPunktowanaById(id)!=null)
         {
-            trasyService.updateTrasaPunktowana(id, trasaPunktowana);
+            trasyService.updateTrasaPunktowana(id, trasaPunktowana, getDateFromString(dataUsuniecia));
         }
         else
         {
@@ -49,19 +56,23 @@ public class TrasyController {
         }
     }
     @PostMapping("/punktowana")
+    @CrossOrigin
     public void createTrasaPunktowana(@RequestBody TrasaPunktowana trasaPunktowana)
     {
         trasyService.insertTrasaPunktowana(trasaPunktowana);
     }
     @DeleteMapping("/punktowana/{id}")
-    public void deleteTrasaPunktowana(@PathVariable("id") long id) {
-        if (trasyService.getTrasaPunktowanaById(id)!=null)
-        {
-            trasyService.deleteTrasaPunktowana(id);
-        }
-        else
+    @CrossOrigin
+    public void deleteTrasaPunktowana(@PathVariable("id") long id, @RequestParam String dataUsuniecia) {
+        TrasaPunktowana trasaPunktowana = trasyService.getTrasaPunktowanaById(id);
+        if (trasaPunktowana==null)
         {
             throw new TrasaNotFoundException();
         }
+        if (trasaPunktowana.getDataUsuniecia()!=null)
+        {
+            throw new TrasaAlreadyDeletedException();
+        }
+        trasyService.deleteTrasaPunktowana(id, getDateFromString(dataUsuniecia));
     }
 }

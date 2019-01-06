@@ -5,6 +5,7 @@ import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 public interface TrasyService {
     List<TrasaPunktowana> getAllTrasyPuntkowane();
     TrasaPunktowana getTrasaPunktowanaById(Long id);
-    void updateTrasaPunktowana(Long id, TrasaPunktowana trasaPunktowana);
+    void updateTrasaPunktowana(Long id, TrasaPunktowana trasaPunktowana, Date dataModyfikacji);
     void insertTrasaPunktowana(TrasaPunktowana trasaPunktowana);
-    void deleteTrasaPunktowana(Long id);
+    void deleteTrasaPunktowana(Long id, Date dataUsuniecia);
 }

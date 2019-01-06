@@ -22,14 +22,15 @@ public class PunktTrasy {
     private String nazwaPunktu;
     @NotEmpty
     private Integer wysokosc;
+    
     @NotEmpty
-    private Integer wysokoscGeograficzna;
+    private Float wysokoscGeograficzna;
     @NotEmpty
-    private Integer szerokoscGeograficzna;
+    private Float szerokoscGeograficzna;
 
     public PunktTrasy(){}
 
-    public PunktTrasy(Long id, String nazwaPunktu, Integer wysokosc, Integer wysokoscGeograficzna, Integer szerokoscGeograficzna) {
+    public PunktTrasy(Long id, String nazwaPunktu, Integer wysokosc, Float wysokoscGeograficzna, Float szerokoscGeograficzna) {
         this.id = id;
         this.nazwaPunktu = nazwaPunktu;
         this.wysokosc = wysokosc;
@@ -61,19 +62,19 @@ public class PunktTrasy {
         this.wysokosc = wysokosc;
     }
 
-    public Integer getWysokoscGeograficzna() {
+    public Float getWysokoscGeograficzna() {
         return wysokoscGeograficzna;
     }
 
-    public void setWysokoscGeograficzna(Integer wysokoscGeograficzna) {
+    public void setWysokoscGeograficzna(Float wysokoscGeograficzna) {
         this.wysokoscGeograficzna = wysokoscGeograficzna;
     }
 
-    public Integer getSzerokoscGeograficzna() {
+    public Float getSzerokoscGeograficzna() {
         return szerokoscGeograficzna;
     }
 
-    public void setSzerokoscGeograficzna(Integer szerokoscGeograficzna) {
+    public void setSzerokoscGeograficzna(Float szerokoscGeograficzna) {
         this.szerokoscGeograficzna = szerokoscGeograficzna;
     }
 
