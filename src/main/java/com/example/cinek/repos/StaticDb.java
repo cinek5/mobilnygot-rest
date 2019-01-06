@@ -19,6 +19,9 @@ import static java.util.Arrays.asList;
  * Created by Cinek on 04.10.2018.
  */
 public class StaticDb {
+    public static long nextIdPunktyTrasy= 0;
+    public static long nextIdTrasy=4;
+
     public static List<Trasa> trasy = new ArrayList<>();
     public static List<TrasaPunktowana> trasyPunktowane = new ArrayList<>();
     public static List<GrupaGorska> grupyGorskie = new ArrayList<>();
@@ -30,11 +33,11 @@ public class StaticDb {
     static
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        GrupaGorska grupaGorska = new GrupaGorska(new Long(1),"Tatry");
-        PunktTrasy punktTrasy1 = new PunktTrasy(new Long(1), "Punkt1", 200, 48,39  );
-        PunktTrasy punktTrasy2 = new PunktTrasy(new Long(2), "Punkt2", 300, 58,49  );
-        PunktTrasy punktTrasy3 = new PunktTrasy(new Long(3), "Punkt3", 234, 38,42  );
-        PunktTrasy punktTrasy4 = new PunktTrasy(new Long(3), "Punkt4", 666, 47,29  );
+        GrupaGorska grupaGorska = new GrupaGorska(1l,"Tatry");
+        PunktTrasy punktTrasy1 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt1", 200, 48,39  );
+        PunktTrasy punktTrasy2 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt2", 300, 58,49  );
+        PunktTrasy punktTrasy3 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt3", 234, 38,42  );
+        PunktTrasy punktTrasy4 = new PunktTrasy(nextIdPunktyTrasy++, "Punkt4", 666, 47,29  );
         SkladowyPunktTrasy skladowyPunktTrasy1 = new SkladowyPunktTrasy(punktTrasy1, 1);
         SkladowyPunktTrasy skladowyPunktTrasy2 = new SkladowyPunktTrasy(punktTrasy2, 2);
         SkladowyPunktTrasy skladowyPunktTrasy3 = new SkladowyPunktTrasy(punktTrasy3, 1);
@@ -42,7 +45,7 @@ public class StaticDb {
         TrasaPunktowana trasaPunktowana1 = null;
         TrasaPunktowana trasaPunktowana2 = null;
         try {
-           trasaPunktowana1 = new TrasaPunktowana(1L, "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
+           trasaPunktowana1 = new TrasaPunktowana(1l, "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
                     sdf.parse("02/10/2018"), null);
             trasaPunktowana2 = new TrasaPunktowana(3L, "Trasa króla", asList(skladowyPunktTrasy3, skladowyPunktTrasy4), grupaGorska, 676,
                     sdf.parse("04/11/2018"), null);

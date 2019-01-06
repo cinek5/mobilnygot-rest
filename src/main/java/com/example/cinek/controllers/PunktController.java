@@ -2,9 +2,9 @@ package com.example.cinek.controllers;
 
 import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.repos.StaticDb;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.cinek.services.PunktService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,9 +14,15 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class PunktController {
+    @Autowired
+    private PunktService punktService;
     @GetMapping("/punkt")
     public List<PunktTrasy> getAllPunkty()
     {
-        return StaticDb.punktyTrasy;
+        return punktService.getAllPunktyTrasy();
+    }
+    @PostMapping("/punkt")
+    public void addPunkt(@RequestBody PunktTrasy punktTrasy) {
+        punktService.insertPunktTrasy(punktTrasy);
     }
 }

@@ -1,7 +1,6 @@
-package com.example.cinek.services.validators;
+package com.example.cinek.validators;
 
 import com.example.cinek.model.trasa.Trasa;
-import com.example.cinek.model.trasa.TrasaPunktowana;
 
 /**
  * Created by Cinek on 06.01.2019.
