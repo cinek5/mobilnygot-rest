@@ -1,4 +1,4 @@
-package com.example.cinek.services;
+package com.example.cinek.services.interfaces;
 
 import com.example.cinek.model.DTO.PathToVerify;
 import com.example.cinek.model.Wedrowka.Status;

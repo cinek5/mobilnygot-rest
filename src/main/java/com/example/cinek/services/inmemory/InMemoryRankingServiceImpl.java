@@ -1,4 +1,4 @@
-package com.example.cinek.services;
+package com.example.cinek.services.inmemory;
 
 import com.example.cinek.model.DTO.RankList;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
@@ -6,6 +6,7 @@ import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
+import com.example.cinek.services.interfaces.RankingService;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class RankingServiceImpl implements RankingService
+public class InMemoryRankingServiceImpl implements RankingService
 {
     @Override
     public RankList getRank(Long id, String startDate, String endDate, List<Long> groups)

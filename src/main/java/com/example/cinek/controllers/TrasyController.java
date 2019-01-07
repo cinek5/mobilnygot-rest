@@ -1,15 +1,12 @@
 package com.example.cinek.controllers;
 
-import com.example.cinek.Utils;
 import com.example.cinek.exceptions.TrasaAlreadyDeletedException;
 import com.example.cinek.exceptions.TrasaNotFoundException;
-import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
-import com.example.cinek.services.TrasyService;
+import com.example.cinek.services.interfaces.TrasyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 import static com.example.cinek.Utils.getDateFromString;

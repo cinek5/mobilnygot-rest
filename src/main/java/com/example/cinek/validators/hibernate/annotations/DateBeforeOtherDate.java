@@ -1,5 +1,7 @@
-package com.example.cinek.validators.hibernate;
+package com.example.cinek.validators.hibernate.annotations;
 
+
+import com.example.cinek.validators.hibernate.validators.DateBeforeOtherDateValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -16,7 +18,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Target(ElementType.TYPE)
 @Retention(RUNTIME)
-@Constraint(validatedBy = {  })
+@Constraint(validatedBy = {DateBeforeOtherDateValidator.class})
 public @interface DateBeforeOtherDate {
 
     String message() default "{com.example.validation.ValidAddress.message}";

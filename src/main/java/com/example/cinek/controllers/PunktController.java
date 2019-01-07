@@ -1,8 +1,7 @@
 package com.example.cinek.controllers;
 
 import com.example.cinek.model.trasa.PunktTrasy;
-import com.example.cinek.repos.StaticDb;
-import com.example.cinek.services.PunktService;
+import com.example.cinek.services.interfaces.PunktService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

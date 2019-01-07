@@ -1,4 +1,4 @@
-package com.example.cinek.services;
+package com.example.cinek.services.inmemory;
 
 import com.example.cinek.exceptions.DuplicateNazwaTrasyException;
 import com.example.cinek.exceptions.NotValidOrderInSkladowePunktyException;
@@ -6,6 +6,7 @@ import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.model.trasa.SkladowyPunktTrasy;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.example.cinek.repos.StaticDb;
+import com.example.cinek.services.interfaces.TrasyService;
 import com.example.cinek.validators.TrasaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.Optional;
  * Created by Cinek on 29.12.2018.
  */
 @Service
-public class TrasyServiceImpl implements TrasyService {
+public class InMemoryTrasyServiceImpl implements TrasyService {
     @Autowired
     private TrasaValidator trasaValidator;
 

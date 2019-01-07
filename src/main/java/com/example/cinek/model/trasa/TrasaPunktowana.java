@@ -1,14 +1,13 @@
 package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
+import com.example.cinek.validators.hibernate.annotations.DateBeforeOtherDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -17,11 +16,14 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue("p")
+@DateBeforeOtherDate(date="dataDodania", otherDate="dataUsuniecia")
 public class TrasaPunktowana extends Trasa {
     @Length(max = 40)
+    @NotNull
     private String nazwa;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat
+    @NotNull
     private Date dataDodania;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat

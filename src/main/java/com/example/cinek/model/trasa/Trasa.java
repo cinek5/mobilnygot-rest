@@ -28,7 +28,7 @@ public abstract class Trasa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(mappedBy = "trasa",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "trasa",cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<SkladowyPunktTrasy> skladowePunktyTrasy;
     @OneToOne
     @NotEmpty

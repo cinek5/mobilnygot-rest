@@ -1,8 +1,7 @@
 package com.example.cinek.controllers;
 
 import com.example.cinek.model.DTO.RankList;
-import com.example.cinek.model.uzytkownik.Turysta;
-import com.example.cinek.services.RankingService;
+import com.example.cinek.services.interfaces.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

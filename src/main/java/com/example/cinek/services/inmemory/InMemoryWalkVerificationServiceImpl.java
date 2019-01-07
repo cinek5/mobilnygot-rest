@@ -1,4 +1,4 @@
-package com.example.cinek.services;
+package com.example.cinek.services.inmemory;
 
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.DTO.PathToVerify;
@@ -9,12 +9,13 @@ import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
+import com.example.cinek.services.interfaces.WalkVerificationService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class WalkVerificationServiceImpl implements WalkVerificationService
+public class InMemoryWalkVerificationServiceImpl implements WalkVerificationService
 {
     @Override
     public PathToVerify getPathToVerify(Przodownik przodownik)
