@@ -1,5 +1,6 @@
 package com.example.cinek.controllers;
 
+import com.example.cinek.exceptions.ExceptionMessages;
 import com.example.cinek.exceptions.TrasaAlreadyDeletedException;
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.trasa.TrasaPunktowana;
@@ -37,7 +38,7 @@ public class TrasyController {
         }
         else
         {
-            throw new TrasaNotFoundException();
+            throw new TrasaNotFoundException(ExceptionMessages.TRASA_NOT_FOUND);
         }
     }
     @PutMapping("/punktowana/{id}")
@@ -49,7 +50,7 @@ public class TrasyController {
         }
         else
         {
-            throw new TrasaNotFoundException();
+            throw new TrasaNotFoundException(ExceptionMessages.TRASA_NOT_FOUND);
         }
     }
     @PostMapping("/punktowana")
@@ -64,11 +65,11 @@ public class TrasyController {
         TrasaPunktowana trasaPunktowana = trasyService.getTrasaPunktowanaById(id);
         if (trasaPunktowana==null)
         {
-            throw new TrasaNotFoundException();
+            throw new TrasaNotFoundException(ExceptionMessages.TRASA_NOT_FOUND);
         }
         if (trasaPunktowana.getDataUsuniecia()!=null)
         {
-            throw new TrasaAlreadyDeletedException();
+            throw new TrasaAlreadyDeletedException(ExceptionMessages.TRASA_ALREADY_DELETED);
         }
         trasyService.deleteTrasaPunktowana(id, getDateFromString(dataUsuniecia));
     }

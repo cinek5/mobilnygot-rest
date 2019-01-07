@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Trasa with specified id not found")
 public class TrasaNotFoundException extends RuntimeException {
+    public TrasaNotFoundException(String message) {
+        super(message);
+    }
 }

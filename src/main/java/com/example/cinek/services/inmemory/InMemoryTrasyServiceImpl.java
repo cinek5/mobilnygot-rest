@@ -1,6 +1,7 @@
 package com.example.cinek.services.inmemory;
 
 import com.example.cinek.exceptions.DuplicateNazwaTrasyException;
+import com.example.cinek.exceptions.ExceptionMessages;
 import com.example.cinek.exceptions.NotValidOrderInSkladowePunktyException;
 import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.model.trasa.SkladowyPunktTrasy;
@@ -62,12 +63,12 @@ public class InMemoryTrasyServiceImpl implements TrasyService {
 
         if(!trasaValidator.hasValidPunktyOrder(trasaPunktowana))
         {
-            throw new NotValidOrderInSkladowePunktyException();
+            throw new NotValidOrderInSkladowePunktyException(ExceptionMessages.NOT_VALID_ORDER);
         }
 
         if(StaticDb.trasyPunktowane.stream().filter(trasa -> trasa.getNazwa().equals(trasaPunktowana.getNazwa())).findAny().isPresent())
         {
-            throw new DuplicateNazwaTrasyException();
+            throw new DuplicateNazwaTrasyException(ExceptionMessages.DUPLICATE_NAZWA);
         }
 
 

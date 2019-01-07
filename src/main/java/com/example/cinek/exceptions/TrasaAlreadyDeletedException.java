@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ResponseStatus(code = HttpStatus.FORBIDDEN, reason = "Trasa had been alread deleted")
 public class TrasaAlreadyDeletedException extends RuntimeException {
+    public TrasaAlreadyDeletedException(String message) {
+        super(message);
+    }
 }

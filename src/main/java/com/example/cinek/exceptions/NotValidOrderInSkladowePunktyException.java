@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ResponseStatus(code = HttpStatus.FORBIDDEN, reason = "Order of skladowe punkty is not valid")
 public class NotValidOrderInSkladowePunktyException extends RuntimeException {
+    public NotValidOrderInSkladowePunktyException(String message) {
+        super(message);
+    }
 }

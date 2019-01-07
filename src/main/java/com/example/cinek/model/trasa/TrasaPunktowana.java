@@ -20,6 +20,7 @@ import java.util.List;
 public class TrasaPunktowana extends Trasa {
     @Length(max = 40)
     @NotNull
+    @Column(unique=true)
     private String nazwa;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat

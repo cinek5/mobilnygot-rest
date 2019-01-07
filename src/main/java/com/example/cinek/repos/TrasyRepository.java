@@ -12,7 +12,8 @@ public interface TrasyRepository {
     Trasa findTrasaById(Long id);
     List<TrasaPunktowana> findAllTrasyPunktowane();
     TrasaPunktowana findTrasaPunktowanaById(Long id);
+    TrasaPunktowana findTrasaPunktowanaByNazwa(String nazwa);
     void insertTrasa(Trasa trasa);
-
+    void updateTrasa(Trasa trasa);
 
 }

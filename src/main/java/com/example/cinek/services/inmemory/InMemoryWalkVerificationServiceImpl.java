@@ -1,5 +1,6 @@
 package com.example.cinek.services.inmemory;
 
+import com.example.cinek.exceptions.ExceptionMessages;
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.DTO.PathToVerify;
 import com.example.cinek.model.Wedrowka.Wedrowka;
@@ -55,7 +56,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
         }
         else
         {
-            throw new TrasaNotFoundException();
+            throw new TrasaNotFoundException(ExceptionMessages.TRASA_NOT_FOUND);
         }
     }
 }

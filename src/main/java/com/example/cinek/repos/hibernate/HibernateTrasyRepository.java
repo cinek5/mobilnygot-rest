@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class HibernateTrasyRepository implements TrasyRepository {
 
     @Override
     public List<TrasaPunktowana> findAllTrasyPunktowane() {
-        List<TrasaPunktowana> trasyPunktowane = entityManager.createQuery("Select trasaPunktowana from TrasaPunktowana trasaPunktowana ", TrasaPunktowana.class
+        List<TrasaPunktowana> trasyPunktowane = entityManager.createQuery("Select trasaPunktowana from TrasaPunktowana trasaPunktowana", TrasaPunktowana.class
         ).getResultList();
         return trasyPunktowane;
     }
@@ -35,7 +36,19 @@ public class HibernateTrasyRepository implements TrasyRepository {
     }
 
     @Override
+    public TrasaPunktowana findTrasaPunktowanaByNazwa(String nazwa) {
+        TypedQuery<TrasaPunktowana> query = entityManager.createQuery(
+                "SELECT t FROM TrasaPunktowana t WHERE t.nazwa = :name", TrasaPunktowana.class);
+        return query.setParameter("name", nazwa).getSingleResult();
+    }
+
+    @Override
     public void insertTrasa(Trasa trasa) {
-        entityManager.persist(trasa);
+            entityManager.persist(trasa);
+    }
+
+    @Override
+    public void updateTrasa(Trasa trasa) {
+        entityManager.merge(trasa);
     }
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class SkladowyPunktTrasy implements Serializable
 {
     @Id
-    @OneToOne(fetch= FetchType.EAGER)
+    @OneToOne(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
     private PunktTrasy punktTrasy;
     @Id
     @ManyToOne

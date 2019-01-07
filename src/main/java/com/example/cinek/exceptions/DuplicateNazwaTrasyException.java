@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ResponseStatus(code = HttpStatus.FORBIDDEN, reason = "Trasa with specified name already exists")
 public class DuplicateNazwaTrasyException extends RuntimeException {
+    public DuplicateNazwaTrasyException(String message) {
+        super(message);
+    }
 }
