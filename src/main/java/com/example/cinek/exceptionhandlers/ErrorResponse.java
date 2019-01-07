@@ -7,6 +7,10 @@ public class ErrorResponse {
     private String error;
     public ErrorResponse(String errorMsg)
     {
-        this.error = error;
+        this.error = errorMsg;
+    }
+    public String getError()
+    {
+        return error;
     }
 }
