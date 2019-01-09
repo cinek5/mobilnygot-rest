@@ -1,7 +1,8 @@
 package com.example.cinek.model.trasa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 /**
@@ -11,10 +12,11 @@ import java.io.Serializable;
 public class SkladowyPunktTrasy implements Serializable
 {
     @Id
-    @OneToOne(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
+    @ManyToOne
     private PunktTrasy punktTrasy;
     @Id
     @ManyToOne
+    @JsonIgnore
     private Trasa trasa;
     @Id
     private int kolejnoscPunktu;

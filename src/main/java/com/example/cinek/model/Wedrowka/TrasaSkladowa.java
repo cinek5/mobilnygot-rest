@@ -12,9 +12,9 @@ public class TrasaSkladowa
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Przodownik verifyPrzodownik;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Trasa trasa;
     @Convert(converter = StatusToIntConverter.class)
     private Status status;

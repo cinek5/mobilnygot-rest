@@ -10,4 +10,5 @@ import java.util.List;
 public interface PunktyRepository {
     List<PunktTrasy> findAllPunktyTrasy();
     PunktTrasy findPunktTrasyById(Long id);
+    List<PunktTrasy> findPunktyTrasyByGrupaGorska(String nazwaGrupy);
 }

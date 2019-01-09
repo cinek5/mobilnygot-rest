@@ -2,6 +2,7 @@ package com.example.cinek.model.Wedrowka;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pamiatka
@@ -12,9 +13,9 @@ public class Pamiatka
     @NotEmpty
     @ManyToOne
     private TrasaSkladowa trasaSkladowa;
-    @NotEmpty
+    @NotNull
     private Boolean czyDokumentujaca;
-    @NotEmpty
+    @NotNull
     private Boolean czyPubliczna;
     //@NotEmpty
     @Column(columnDefinition="BLOB")

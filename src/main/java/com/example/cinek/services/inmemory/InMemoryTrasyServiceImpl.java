@@ -19,7 +19,6 @@ import java.util.Optional;
 /**
  * Created by Cinek on 29.12.2018.
  */
-@Service
 public class InMemoryTrasyServiceImpl implements TrasyService {
     @Autowired
     private TrasaValidator trasaValidator;

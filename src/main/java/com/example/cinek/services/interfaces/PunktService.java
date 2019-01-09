@@ -10,5 +10,6 @@ import java.util.List;
 
 public interface PunktService {
     List<PunktTrasy> getAllPunktyTrasy();
+    List<PunktTrasy> getPunktyTrasyByGrupaGorska();
     void insertPunktTrasy(PunktTrasy punktTrasy);
 }

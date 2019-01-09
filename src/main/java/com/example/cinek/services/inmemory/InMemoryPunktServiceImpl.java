@@ -18,6 +18,11 @@ public class InMemoryPunktServiceImpl implements PunktService {
     }
 
     @Override
+    public List<PunktTrasy> getPunktyTrasyByGrupaGorska() {
+        return null;
+    }
+
+    @Override
     public void insertPunktTrasy(PunktTrasy punktTrasy) {
         punktTrasy.setId(StaticDb.nextIdPunktyTrasy++);
         StaticDb.punktyTrasy.add(punktTrasy);

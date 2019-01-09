@@ -14,6 +14,7 @@ import com.example.cinek.services.interfaces.TrasyService;
 import com.example.cinek.validators.TrasaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -22,6 +23,7 @@ import java.util.List;
 /**
  * Created by Cinek on 07.01.2019.
  */
+@Service
 @Transactional
 public class TrasyServiceImpl implements TrasyService {
     @Autowired
@@ -74,7 +76,7 @@ public class TrasyServiceImpl implements TrasyService {
         {
             throw new NotValidOrderInSkladowePunktyException(ExceptionMessages.NOT_VALID_ORDER);
         }
-        if(trasyRepository.findTrasaPunktowanaByNazwa(trasaPunktowana.getNazwa())==null)
+        if(trasyRepository.findTrasaPunktowanaByNazwa(trasaPunktowana.getNazwa())!=null)
         {
             throw new DuplicateNazwaTrasyException(ExceptionMessages.DUPLICATE_NAZWA);
         }

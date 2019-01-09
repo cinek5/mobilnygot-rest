@@ -16,7 +16,6 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue("p")
-@DateBeforeOtherDate(date="dataDodania", otherDate="dataUsuniecia")
 public class TrasaPunktowana extends Trasa {
     @Length(max = 40)
     @NotNull

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -39,12 +40,24 @@ public class HibernateTrasyRepository implements TrasyRepository {
     public TrasaPunktowana findTrasaPunktowanaByNazwa(String nazwa) {
         TypedQuery<TrasaPunktowana> query = entityManager.createQuery(
                 "SELECT t FROM TrasaPunktowana t WHERE t.nazwa = :name", TrasaPunktowana.class);
-        return query.setParameter("name", nazwa).getSingleResult();
+        List<TrasaPunktowana> trasaPunktowana = query.setParameter("name", nazwa).getResultList();
+        if (trasaPunktowana.isEmpty()) return null;
+        else return trasaPunktowana.iterator().next();
     }
 
     @Override
+    @Transactional
     public void insertTrasa(Trasa trasa) {
-            entityManager.persist(trasa);
+
+        // insert to db if necessary
+        trasa.getSkladowePunktyTrasy().stream().forEach(
+                skladowyPunkt -> skladowyPunkt.setPunktTrasy(entityManager.merge(skladowyPunkt.getPunktTrasy()))
+        );
+        trasa.getSkladowePunktyTrasy().stream().forEach(
+                skladowyPunktTrasy -> skladowyPunktTrasy.setTrasa(trasa) );
+
+        entityManager.persist(trasa);
+
     }
 
     @Override

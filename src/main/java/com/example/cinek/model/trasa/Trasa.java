@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -28,12 +29,12 @@ public abstract class Trasa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(mappedBy = "trasa",cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER,mappedBy = "trasa")
     private List<SkladowyPunktTrasy> skladowePunktyTrasy;
     @OneToOne
-    @NotEmpty
+    @NotNull
     private GrupaGorska grupaGorska;
-    @NotEmpty
+    @NotNull
     private Integer punktyRegulaminowe;
 
 

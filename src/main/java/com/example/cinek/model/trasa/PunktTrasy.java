@@ -1,13 +1,13 @@
 package com.example.cinek.model.trasa;
 
+import com.example.cinek.model.grupa.GrupaGorska;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Cinek on 27.12.2018.
@@ -20,13 +20,15 @@ public class PunktTrasy {
     @NotEmpty
     @Length(max = 40)
     private String nazwaPunktu;
-    @NotEmpty
+    @NotNull
     private Integer wysokosc;
+
     
-    @NotEmpty
+    @NotNull
     private Float wysokoscGeograficzna;
-    @NotEmpty
+    @NotNull
     private Float szerokoscGeograficzna;
+
 
     public PunktTrasy(){}
 
@@ -79,8 +81,20 @@ public class PunktTrasy {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        return id.equals(((PunktTrasy)obj).id);
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + nazwaPunktu.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PunktTrasy)) return false;
+
+        PunktTrasy that = (PunktTrasy) o;
+
+        if (!id.equals(that.id)) return false;
+        return nazwaPunktu.equals(that.nazwaPunktu);
     }
 }

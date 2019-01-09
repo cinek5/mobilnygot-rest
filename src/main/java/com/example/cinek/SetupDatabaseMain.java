@@ -25,7 +25,7 @@ public class SetupDatabaseMain
                 .buildMetadata();
 
         new SchemaExport()
-                .setOutputFile("db-schema.hibernate5.dll")
+                .setOutputFile("db-schema.hibernate5.sql")
                 .create(EnumSet.of(TargetType.SCRIPT), metadata);
 
         metadata.buildSessionFactory().close();

@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 public class Turysta extends Uzytkownik
 {
-    @NotEmpty
+    @NotNull
     private Integer zgromadzonePunkty;
     @OneToMany(mappedBy = "turysta", cascade = CascadeType.ALL)
     private List<Wedrowka> wedrowki;
