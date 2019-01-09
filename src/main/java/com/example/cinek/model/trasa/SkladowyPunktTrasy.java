@@ -16,7 +16,7 @@ public class SkladowyPunktTrasy implements Serializable
     @Id
     @ManyToOne
     private Trasa trasa;
-    @NotEmpty
+    @Id
     private int kolejnoscPunktu;
 
     public SkladowyPunktTrasy() {}
