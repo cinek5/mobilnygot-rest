@@ -15,7 +15,7 @@ public class GrupaGorska {
     private Long id;
     @NotEmpty
     @Column(unique = true)
-    @Length(max = 40)
+    @Length(max = 50)
     private String nazwaGrupy;
 
     public GrupaGorska(){}

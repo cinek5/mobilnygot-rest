@@ -17,7 +17,7 @@ public class PunktTrasy {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotEmpty
-    @Length(max = 40)
+    @Length(max = 50)
     private String nazwaPunktu;
     @NotNull
     private Integer wysokosc;
