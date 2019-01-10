@@ -1,7 +1,5 @@
 package com.example.cinek;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -10,6 +8,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 public class RestBootApplication {
 
 	public static void main(String[] args) {
+		SetupDatabaseMain.StartDbTcpServer();
 		SpringApplication.run(RestBootApplication.class, args);
 	}
 }

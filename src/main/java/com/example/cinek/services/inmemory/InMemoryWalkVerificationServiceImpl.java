@@ -20,7 +20,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
 {
     @Override
     public PathToVerify getPathToVerify(Przodownik przodownik)
-    {
+    {/*
         Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null
                         && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
@@ -34,7 +34,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
                     .filter(t -> t.getWedrowki().contains(wedrowkaOptional.get())).findAny();
 
             return new PathToVerify(turystaOptional.get(), wedrowkaOptional.get(), trasaPunktowanaOptional.get());
-        }
+        }*/
         return null;
     }
 

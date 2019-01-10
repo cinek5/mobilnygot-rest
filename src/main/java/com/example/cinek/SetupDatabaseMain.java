@@ -30,4 +30,13 @@ public class SetupDatabaseMain
 
         metadata.buildSessionFactory().close();
     }
+
+    public static void StartDbTcpServer()
+    {
+        try
+        {
+            org.h2.tools.Server server = org.h2.tools.Server.createTcpServer().start();
+        }
+        catch (Exception e)  { e.printStackTrace(); }
+    }
 }

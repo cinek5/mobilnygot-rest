@@ -1,41 +1,41 @@
-﻿Id;NazwaPunktu;SzerokoscGeograficzna;Wysokosc;WysokoscGeograficzna
-1;Soszów Wielki;50.432;885;15.4564
-2;Orłowa;50.566;813;15.46554
-3;Kotarz;50.324;985;15.45645
-4;Barania Góra;50.342;1220;15.4545
-5;Mała Zabawa;50.5667;798;15.234
-6;Magura pod Wielką Raczą;50.2342;1073;15.454
-7;Krawców Wierch;50.3243;1084;15.4645
-8;Romanka;50.345;1366;15.456
-9;Jałowiec;50.546;1111;15.2432
-10;Babia Góra;50.234;1725;15.2342
-11;Hala Krupowa;50.235;1170;15.32442
-12;Pająków Wierch;50.4525;934;15.56567
-13;Hrobacza Łąka;50.7565;828;15.234
-14;Łamana Skała;50.90886;929;15.67
-15;Babica;50.3243;728;15.2343
-16;Groń;50.1231;810;15.3453
-17;Koskowa Góra;50.34435;866;15.34535
-18;Śnieżka;50.231234;1603;15.345435
-19;zamek Chojnik;50.782345;627;15.84334
-20;Zadzierna;50.7224;724;15.95983
-21;Skalnik;50.809222;945;15.901589
-22;schr Andrzejówka;50.2322;810;15.43432
-23;Gęsia Szyja;50.3342;1489;15.32321
-24;Rusinowa Polana;50.3214;1220;15.23234
-25;Schronisko PTTK nad Morskim Okiem;50.2323;1410;15.32324
-26;Wodogrzmoty Mickiewicza;50.213321;1100;15.23132
-27;Schronisko PTTK na Polanie Chochołowskiej;50.23324;1146;15.2323
-28;Dolina Jarząbcza;50.242332;1265;15.232432
-29;Butorowy Wierch;50.3242;1160;15.2323
-30;Palenica Kościeliska;50.21323;1183;15.43324
-31;Smrek (TPG Stóg Izerski);50.324432;1124;15.24332
-32;Suchacz;50.323;917;15.231
-33;TPG Sowia Przełęcz;50.2344;1164;15.242432
-34;Schronisko PTTK Przełęcz Okraj;50.32432;1046;32432
-35;Wysoki Groń;50.2432;905;15.22434
-36;Przełęcz Łupkowskia;50.324432;640;15.24432
-37;Koszarka;50.234;794;15.243432
-38;Świnica;50.3234;2301;15.223
-39;Skrajny Granat;50.53423;2010;15.32423
-40;Przełęcz Zawrat;50.53423;1955;15.32423
+﻿Id;NazwaPunktu;SzerokoscGeograficzna;Wysokosc;WysokoscGeograficzna;GrupaGorska_Id
+1;Soszów Wielki;50.432;885;15.4564;1
+2;Orłowa;50.566;813;15.46554;1
+3;Kotarz;50.324;985;15.45645;1
+4;Barania Góra;50.342;1220;15.4545;1
+5;Mała Zabawa;50.5667;798;15.234;1
+6;Magura pod Wielką Raczą;50.2342;1073;15.454;1
+7;Krawców Wierch;50.3243;1084;15.4645;1
+8;Romanka;50.345;1366;15.456;1
+9;Jałowiec;50.546;1111;15.2432;1
+10;Babia Góra;50.234;1725;15.2342;1
+11;Hala Krupowa;50.235;1170;15.32442;1
+12;Pająków Wierch;50.4525;934;15.56567;1
+13;Hrobacza Łąka;50.7565;828;15.234;1
+14;Łamana Skała;50.90886;929;15.67;1
+15;Babica;50.3243;728;15.2343;1
+16;Groń;50.1231;810;15.3453;1
+17;Koskowa Góra;50.34435;866;15.34535;1
+18;Śnieżka;50.231234;1603;15.345435;1
+19;zamek Chojnik;50.782345;627;15.84334;1
+20;Zadzierna;50.7224;724;15.95983;1
+21;Skalnik;50.809222;945;15.901589;1
+22;schr Andrzejówka;50.2322;810;15.43432;1
+23;Gęsia Szyja;50.3342;1489;15.32321;1
+24;Rusinowa Polana;50.3214;1220;15.23234;1
+25;Schronisko PTTK nad Morskim Okiem;50.2323;1410;15.32324;1
+26;Wodogrzmoty Mickiewicza;50.213321;1100;15.23132;1
+27;Schronisko PTTK na Polanie Chochołowskiej;50.23324;1146;15.2323;2
+28;Dolina Jarząbcza;50.242332;1265;15.232432;2
+29;Butorowy Wierch;50.3242;1160;15.2323;3
+30;Palenica Kościeliska;50.21323;1183;15.43324;3
+31;Smrek (TPG Stóg Izerski);50.324432;1124;15.24332;21
+32;Suchacz;50.323;917;15.231;21
+33;TPG Sowia Przełęcz;50.2344;1164;15.242432;23
+34;Schronisko PTTK Przełęcz Okraj;50.32432;1046;32432;23
+35;Wysoki Groń;50.2432;905;15.22434;16
+36;Przełęcz Łupkowskia;50.324432;640;15.24432;16
+37;Koszarka;50.234;794;15.243432;16
+38;Świnica;50.3234;2301;15.223;1
+39;Skrajny Granat;50.53423;2010;15.32423;1
+40;Przełęcz Zawrat;50.53423;1955;15.32423;1

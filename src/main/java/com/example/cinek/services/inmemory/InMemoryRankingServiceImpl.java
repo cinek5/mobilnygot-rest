@@ -34,7 +34,7 @@ public class InMemoryRankingServiceImpl implements RankingService
         }
 
         List<Turysta> tmpList = new ArrayList<>(StaticDb.turysci);
-        for(Turysta t : tmpList)
+        /*for(Turysta t : tmpList)
         {
             int points = 0;
             for(Wedrowka w : t.getWedrowki())
@@ -54,7 +54,7 @@ public class InMemoryRankingServiceImpl implements RankingService
                 }
             }
             t.setZgromadzonePunkty(points);
-        }
+        }*/
 
         tmpList.sort((o1, o2) -> o2.getZgromadzonePunkty().compareTo(o1.getZgromadzonePunkty()));
 
