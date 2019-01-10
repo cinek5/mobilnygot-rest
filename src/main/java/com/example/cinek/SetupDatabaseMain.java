@@ -1,5 +1,6 @@
 package com.example.cinek;
 
+import org.h2.util.IOUtils;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -11,11 +12,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.datasource.embedded.ConnectionProperties;
+import sun.nio.ch.IOUtil;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.*;
 import java.util.EnumSet;
 
 public class SetupDatabaseMain
@@ -74,6 +77,8 @@ public class SetupDatabaseMain
             {
                 conn.createStatement().execute(statement);
             }
+            insertPhotos(conn);
+            //testPhotos(conn);
         }
         catch (Exception e) { e.printStackTrace(); }
 
@@ -82,5 +87,36 @@ public class SetupDatabaseMain
             //conn.createStatement().execute("SET REFERENTIAL_INTEGRITY TRUE");
         }
         catch (Exception e) { e.printStackTrace(); }
+    }
+
+    private static void insertPhotos(Connection conn) throws SQLException
+    {
+        Statement statement = conn.createStatement();
+        statement.execute("SELECT ID FROM PAMIATKA");
+        while(statement.getResultSet().next())
+        {
+            Long id = statement.getResultSet().getLong(1);
+            String sql = String.format("UPDATE PAMIATKA SET ZDJECIE=(FILE_READ" +
+                    "('src/main/resources/DbData/photos/photo_%d.jpg')) WHERE ID=%d", id, id);
+            conn.createStatement().execute(sql);
+        }
+    }
+
+    private static void testPhotos(Connection conn) throws SQLException, IOException
+    {
+        Statement statement = conn.createStatement();
+        statement.execute("SELECT ZDJECIE FROM PAMIATKA");
+        int index = 1;
+        while(statement.getResultSet().next())
+        {
+            Blob blob = statement.getResultSet().getBlob(1);
+            InputStream in = blob.getBinaryStream();
+            String path = String.format("src/main/resources/DbData/photosWritten/photo_%d.jpg", index);
+            OutputStream out = new FileOutputStream(path);
+            IOUtils.copy(in, out);
+            in.close();
+            out.close();
+            index++;
+        }
     }
 }
