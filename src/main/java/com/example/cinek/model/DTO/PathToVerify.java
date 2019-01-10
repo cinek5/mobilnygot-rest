@@ -1,11 +1,5 @@
 package com.example.cinek.model.DTO;
 
-import com.example.cinek.model.Wedrowka.Pamiatka;
-import com.example.cinek.model.Wedrowka.TrasaSkladowa;
-import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.trasa.SkladowyPunktTrasy;
-import com.example.cinek.model.trasa.TrasaNiepunktowana;
-import com.example.cinek.model.uzytkownik.Turysta;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
@@ -19,25 +13,14 @@ public class PathToVerify
     private String touristSurname;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date walkDate;
-    private List<SkladowyPunktTrasy> pahtPoints;
-    private List<Pamiatka> pics;
-    private Integer pointsFor;
-    private Boolean canModifyPoints;
+    private List<String> pathPointsNames;
+    private List<String> pathPointsCoords;
+    private List<byte[]> pics;
+    private Integer rankPointsFor;
+    private Boolean canModifyRankPoints;
 
     public PathToVerify() {}
 
-    public PathToVerify(Turysta tourist, Wedrowka walk, TrasaSkladowa componentPath)
-    {
-        verifyPahtId = componentPath.getId();
-        touristId = tourist.getId();
-        touristName = tourist.getImie();
-        touristSurname = tourist.getNazwisko();
-        walkDate = walk.getDataWedrowki();
-        pahtPoints = componentPath.getTrasa().getSkladowePunktyTrasy();
-        pics = componentPath.getPamiatki();
-        pointsFor = componentPath.getTrasa().getPunktyRegulaminowe();
-        canModifyPoints = componentPath.getTrasa() instanceof TrasaNiepunktowana;
-    }
 
     public Long getVerifyPahtId()
     {
@@ -89,43 +72,53 @@ public class PathToVerify
         this.walkDate = walkDate;
     }
 
-    public List<SkladowyPunktTrasy> getPahtPoints()
+    public List<String> getPathPointsNames()
     {
-        return pahtPoints;
+        return pathPointsNames;
     }
 
-    public void setPahtPoints(List<SkladowyPunktTrasy> pahtPoints)
+    public void setPathPointsNames(List<String> pathPointsNames)
     {
-        this.pahtPoints = pahtPoints;
+        this.pathPointsNames = pathPointsNames;
     }
 
-    public List<Pamiatka> getPics()
+    public List<String> getPathPointsCoords()
+    {
+        return pathPointsCoords;
+    }
+
+    public void setPathPointsCoords(List<String> pathPointsCoords)
+    {
+        this.pathPointsCoords = pathPointsCoords;
+    }
+
+    public List<byte[]> getPics()
     {
         return pics;
     }
 
-    public void setPics(List<Pamiatka> pics)
+    public void setPics(List<byte[]> pics)
     {
         this.pics = pics;
     }
 
-    public Integer getPointsFor()
+    public Integer getRankPointsFor()
     {
-        return pointsFor;
+        return rankPointsFor;
     }
 
-    public void setPointsFor(Integer pointsFor)
+    public void setRankPointsFor(Integer rankPointsFor)
     {
-        this.pointsFor = pointsFor;
+        this.rankPointsFor = rankPointsFor;
     }
 
-    public Boolean getCanModifyPoints()
+    public Boolean getCanModifyRankPoints()
     {
-        return canModifyPoints;
+        return canModifyRankPoints;
     }
 
-    public void setCanModifyPoints(Boolean canModifyPoints)
+    public void setCanModifyRankPoints(Boolean canModifyRankPoints)
     {
-        this.canModifyPoints = canModifyPoints;
+        this.canModifyRankPoints = canModifyRankPoints;
     }
 }
