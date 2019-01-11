@@ -2,6 +2,8 @@ package com.example.cinek.repos.hibernate;
 
 import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.repos.PunktyRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * Created by Cinek on 09.01.2019.
  */
+@Repository
 public class HibernatePunktyRepository implements PunktyRepository {
     @PersistenceContext
     private EntityManager entityManager;

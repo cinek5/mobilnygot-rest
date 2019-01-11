@@ -15,6 +15,7 @@ import java.util.List;
 public class PunktController {
     @Autowired
     private PunktService punktService;
+
     @GetMapping("/punkt")
     public List<PunktTrasy> getAllPunkty()
     {
@@ -23,5 +24,10 @@ public class PunktController {
     @PostMapping("/punkt")
     public void addPunkt(@RequestBody PunktTrasy punktTrasy) {
         punktService.insertPunktTrasy(punktTrasy);
+    }
+    @GetMapping("/punkt/ingrupa")
+    public List<PunktTrasy> getPunktyInGrupa(@RequestParam String grupa)
+    {
+        return punktService.getPunktyTrasyByGrupaGorska(grupa);
     }
 }

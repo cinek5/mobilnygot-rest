@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * Created by Cinek on 05.01.2019.
  */
-@Service
 public class InMemoryPunktServiceImpl implements PunktService {
     @Override
     public List<PunktTrasy> getAllPunktyTrasy() {
@@ -18,7 +17,7 @@ public class InMemoryPunktServiceImpl implements PunktService {
     }
 
     @Override
-    public List<PunktTrasy> getPunktyTrasyByGrupaGorska() {
+    public List<PunktTrasy> getPunktyTrasyByGrupaGorska(String nazwaGrupy) {
         return null;
     }
 

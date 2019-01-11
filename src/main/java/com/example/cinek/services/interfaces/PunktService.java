@@ -2,6 +2,7 @@ package com.example.cinek.services.interfaces;
 
 
 import com.example.cinek.model.trasa.PunktTrasy;
+
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ import java.util.List;
 
 public interface PunktService {
     List<PunktTrasy> getAllPunktyTrasy();
-    List<PunktTrasy> getPunktyTrasyByGrupaGorska();
+
+    List<PunktTrasy> getPunktyTrasyByGrupaGorska(String nazwaGrupy);
+
     void insertPunktTrasy(PunktTrasy punktTrasy);
 }
