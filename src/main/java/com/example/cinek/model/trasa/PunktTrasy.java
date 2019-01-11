@@ -1,10 +1,13 @@
 package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -93,8 +96,14 @@ public class PunktTrasy {
 
         PunktTrasy that = (PunktTrasy) o;
 
-        if (!id.equals(that.id)) return false;
-        return nazwaPunktu.equals(that.nazwaPunktu);
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (nazwaPunktu != null ? !nazwaPunktu.equals(that.nazwaPunktu) : that.nazwaPunktu != null) return false;
+        if (wysokosc != null ? !wysokosc.equals(that.wysokosc) : that.wysokosc != null) return false;
+        if (wysokoscGeograficzna != null ? !wysokoscGeograficzna.equals(that.wysokoscGeograficzna) : that.wysokoscGeograficzna != null)
+            return false;
+        if (szerokoscGeograficzna != null ? !szerokoscGeograficzna.equals(that.szerokoscGeograficzna) : that.szerokoscGeograficzna != null)
+            return false;
+        return grupaGorska != null ? grupaGorska.equals(that.grupaGorska) : that.grupaGorska == null;
     }
 
     public GrupaGorska getGrupaGorska()

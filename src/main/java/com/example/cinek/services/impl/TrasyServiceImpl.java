@@ -1,12 +1,10 @@
 package com.example.cinek.services.impl;
 
 import com.example.cinek.Utils;
-import com.example.cinek.exceptions.DuplicateNazwaTrasyException;
-import com.example.cinek.exceptions.ExceptionMessages;
-import com.example.cinek.exceptions.NotValidOrderInSkladowePunktyException;
-import com.example.cinek.exceptions.TrasaAlreadyDeletedException;
+import com.example.cinek.exceptions.*;
 import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.model.trasa.SkladowyPunktTrasy;
+import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.repos.TrasyRepository;
@@ -72,14 +70,30 @@ public class TrasyServiceImpl implements TrasyService {
     private void insertTrasaPunktowanaToDb(TrasaPunktowana trasaPunktowana, Date dataDodania) {
         trasaPunktowana.setDataDodania(dataDodania);
 
-        if(!trasaValidator.hasValidPunktyOrder(trasaPunktowana))
+        validateTrasa(trasaPunktowana);
+
+        trasyRepository.insertTrasa(trasaPunktowana);
+    }
+
+    private void validateTrasa(Trasa trasa)
+    {
+        if(!trasaValidator.hasValidPunktySize(trasa))
+        {
+            throw new TrasaNotEnoughPunktyException(ExceptionMessages.TRASA_NOT_ENOUGH_PUNKTY);
+        }
+
+        if(!trasaValidator.hasValidPunktyOrder(trasa))
         {
             throw new NotValidOrderInSkladowePunktyException(ExceptionMessages.NOT_VALID_ORDER);
         }
-        if(trasyRepository.findTrasaPunktowanaByNazwa(trasaPunktowana.getNazwa())!=null)
+        if(!trasaValidator.hasPunktySameGrupaAsTrasa(trasa))
+        {
+            throw new TrasaAndPunktDifferentGroupsException(ExceptionMessages.TRASA_PUNT_DIFFERENT_GROUPS);
+        }
+
+        if(trasa instanceof TrasaPunktowana && trasyRepository.findTrasaPunktowanaByNazwa(((TrasaPunktowana)trasa).getNazwa())!=null)
         {
             throw new DuplicateNazwaTrasyException(ExceptionMessages.DUPLICATE_NAZWA);
         }
-        trasyRepository.insertTrasa(trasaPunktowana);
     }
 }

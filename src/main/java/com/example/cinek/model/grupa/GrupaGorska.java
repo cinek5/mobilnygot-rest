@@ -42,8 +42,20 @@ public class GrupaGorska {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        return id.equals(((GrupaGorska)obj).id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GrupaGorska)) return false;
+
+        GrupaGorska that = (GrupaGorska) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        return nazwaGrupy != null ? nazwaGrupy.equals(that.nazwaGrupy) : that.nazwaGrupy == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (nazwaGrupy != null ? nazwaGrupy.hashCode() : 0);
+        return result;
     }
 }
