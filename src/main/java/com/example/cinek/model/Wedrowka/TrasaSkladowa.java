@@ -12,7 +12,7 @@ import java.util.List;
 public class TrasaSkladowa
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @ManyToOne
     private Przodownik verifyPrzodownik;

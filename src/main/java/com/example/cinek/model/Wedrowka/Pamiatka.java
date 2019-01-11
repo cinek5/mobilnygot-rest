@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Pamiatka
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @NotEmpty
     @ManyToOne

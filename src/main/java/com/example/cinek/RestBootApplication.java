@@ -10,13 +10,13 @@ import org.springframework.context.event.EventListener;
 public class RestBootApplication {
 
 	public static void main(String[] args) {
+		SetupDatabaseMain.startDbTcpServer();
 		SpringApplication.run(RestBootApplication.class, args);
 	}
 
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void prepareDb() {
-		SetupDatabaseMain.startDbTcpServer();
 		SetupDatabaseMain.insertData();
 	}
 }

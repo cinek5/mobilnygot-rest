@@ -58,11 +58,6 @@ public class TrasyServiceImpl implements TrasyService {
     public void deleteTrasaPunktowana(Long id, Date dataUsuniecia) {
         TrasaPunktowana trasaPunktowana = trasyRepository.findTrasaPunktowanaById(id);
 
-        if(dataUsuniecia!=null)
-        {
-            throw new TrasaAlreadyDeletedException(ExceptionMessages.TRASA_ALREADY_DELETED);
-        }
-
         trasaPunktowana.setDataUsuniecia(dataUsuniecia);
         trasyRepository.updateTrasa(trasaPunktowana);
 

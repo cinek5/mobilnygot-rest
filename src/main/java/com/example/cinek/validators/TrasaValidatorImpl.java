@@ -36,7 +36,7 @@ public class TrasaValidatorImpl implements TrasaValidator {
     public boolean hasPunktySameGrupaAsTrasa(Trasa trasa) {
         List<SkladowyPunktTrasy> skladowePunktyTrasy = trasa.getSkladowePunktyTrasy();
         String grupaGorska = trasa.getGrupaGorska().getNazwaGrupy();
-        return skladowePunktyTrasy
+        return !skladowePunktyTrasy
                 .stream()
                 .filter(skladowyPunktTrasy -> !skladowyPunktTrasy
                         .getPunktTrasy()

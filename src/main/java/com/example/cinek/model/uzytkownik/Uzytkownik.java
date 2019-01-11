@@ -21,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
 public abstract class Uzytkownik
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @NotEmpty
     private String imie;

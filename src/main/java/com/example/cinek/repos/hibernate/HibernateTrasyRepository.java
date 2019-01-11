@@ -56,6 +56,7 @@ public class HibernateTrasyRepository implements TrasyRepository {
         trasa.getSkladowePunktyTrasy().stream().forEach(
                 skladowyPunktTrasy -> skladowyPunktTrasy.setTrasa(trasa) );
 
+
         entityManager.persist(trasa);
 
     }

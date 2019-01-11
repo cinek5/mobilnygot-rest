@@ -14,7 +14,7 @@ import java.util.List;
 public class Wedrowka
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @ManyToOne
     private Turysta turysta;

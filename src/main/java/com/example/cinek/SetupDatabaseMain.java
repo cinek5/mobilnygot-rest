@@ -14,12 +14,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.datasource.embedded.ConnectionProperties;
 import sun.nio.ch.IOUtil;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SetupDatabaseMain
 {
@@ -51,6 +54,16 @@ public class SetupDatabaseMain
         }
         catch (Exception e)  { e.printStackTrace(); }
     }
+    public  static void listFilesForFolder(List<String> filenames, final File folder) {
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                listFilesForFolder(filenames,fileEntry);
+            } else {
+                if(fileEntry.getName().contains(".csv"))
+                    filenames.add(fileEntry.getPath());
+            }
+        }
+    }
 
     public static void insertData()
     {
@@ -72,12 +85,25 @@ public class SetupDatabaseMain
         {
             conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/mem:default",
                     "sa", "");
-            //conn.createStatement().execute("SET REFERENTIAL_INTEGRITY FALSE");
-            for(String statement : statements)
-            {
+            //conn.createStatement().execute("SET REFERENTIAL_INTEGRITY FALSE");z
+            for(String statement : statements) {
                 conn.createStatement().execute(statement);
             }
             insertPhotos(conn);
+
+            File dbDataDir = new File("src/main/resources/DbData");
+            List<String> csvFiles = new ArrayList<>();
+            listFilesForFolder(csvFiles, dbDataDir);
+            long numberOfRowsInserted = 0;
+            for (String fileName : csvFiles)
+            {
+                Path path = Paths.get(fileName);
+                long lineCount = Files.lines(path).count();
+                numberOfRowsInserted += lineCount-1;
+            }
+            String sql = String.format("alter sequence HIBERNATE_SEQUENCE restart with %d", numberOfRowsInserted);
+            conn.createStatement().execute(sql);
+
             //testPhotos(conn);
         }
         catch (Exception e) { e.printStackTrace(); }

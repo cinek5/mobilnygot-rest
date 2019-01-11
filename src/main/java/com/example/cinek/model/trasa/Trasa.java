@@ -26,7 +26,7 @@ import java.util.List;
 @DiscriminatorColumn(name = "typ_trasy")
 public abstract class Trasa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER,mappedBy = "trasa")
     private List<SkladowyPunktTrasy> skladowePunktyTrasy;

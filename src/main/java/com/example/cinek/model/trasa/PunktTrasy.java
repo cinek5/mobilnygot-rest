@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class PunktTrasy {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @NotEmpty
     @Length(max = 50)
