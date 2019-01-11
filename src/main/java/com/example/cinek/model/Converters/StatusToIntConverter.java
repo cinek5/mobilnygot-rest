@@ -1,6 +1,6 @@
-package com.example.cinek.model.Wedrowka;
+package com.example.cinek.model.Converters;
 
-import com.example.cinek.model.Wedrowka.Status;
+import com.example.cinek.model.DTO.Status;
 
 import javax.persistence.AttributeConverter;
 

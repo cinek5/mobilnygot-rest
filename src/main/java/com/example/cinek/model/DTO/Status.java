@@ -1,4 +1,4 @@
-package com.example.cinek.model.Wedrowka;
+package com.example.cinek.model.DTO;
 
 public enum Status
 {
