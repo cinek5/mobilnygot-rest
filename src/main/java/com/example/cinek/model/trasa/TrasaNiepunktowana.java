@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Cinek on 27.12.2018.
  */
 @Entity
-@DiscriminatorValue("n")
+@DiscriminatorValue("N")
 public class TrasaNiepunktowana extends Trasa {
     public TrasaNiepunktowana() {}
 

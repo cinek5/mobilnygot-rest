@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Cinek on 27.12.2018.
  */
 @Entity
-@DiscriminatorValue("p")
+@DiscriminatorValue("P")
 public class TrasaPunktowana extends Trasa {
     @Length(max = 70)
     @NotNull
