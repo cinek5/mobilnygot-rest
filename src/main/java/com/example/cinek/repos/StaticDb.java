@@ -1,6 +1,6 @@
 package com.example.cinek.repos;
 
-import com.example.cinek.model.Wedrowka.Status;
+import com.example.cinek.model.DTO.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.Wedrowka.Wedrowka;
 import com.example.cinek.model.grupa.GrupaGorska;
@@ -46,7 +46,7 @@ public class StaticDb {
         TrasaPunktowana trasaPunktowana1 = null;
         TrasaPunktowana trasaPunktowana2 = null;
         try {
-           trasaPunktowana1 = new TrasaPunktowana(1l, "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
+           trasaPunktowana1 = new TrasaPunktowana(1L, "Malownicza trasa", asList(skladowyPunktTrasy1, skladowyPunktTrasy2), grupaGorska, 200,
                     sdf.parse("02/10/2018"), null);
             trasaPunktowana2 = new TrasaPunktowana(3L, "Trasa króla", asList(skladowyPunktTrasy3, skladowyPunktTrasy4), grupaGorska, 676,
                     sdf.parse("04/11/2018"), null);
@@ -57,20 +57,12 @@ public class StaticDb {
         Turysta turysta = new Turysta() {{setId(1L);}};
         punktyTrasy.addAll(asList(punktTrasy1, punktTrasy2, punktTrasy3, punktTrasy4));
 
-
-
-
-
-
-
-
-
-
         turysta.setZgromadzonePunkty(100);
         Wedrowka w = new Wedrowka();
         List<SkladowyPunktTrasy> skladowePunktyTrasy = new ArrayList<SkladowyPunktTrasy>()
                                                                 {{add(skladowyPunktTrasy1); add(skladowyPunktTrasy2);}};
-        try  {
+        try
+        {
             w.setDataWedrowki(sdf.parse("02/10/2018"));
             TrasaSkladowa ts = new TrasaSkladowa() {{setId(1L);}};
             trasySkladowe.add(ts);

@@ -1,7 +1,6 @@
 package com.example.cinek.model.trasa;
 
 import com.example.cinek.model.grupa.GrupaGorska;
-import com.example.cinek.validators.hibernate.annotations.DateBeforeOtherDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,7 +16,7 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("p")
 public class TrasaPunktowana extends Trasa {
-    @Length(max = 40)
+    @Length(max = 70)
     @NotNull
     @Column(unique=true)
     private String nazwa;

@@ -3,12 +3,10 @@ package com.example.cinek.services.inmemory;
 import com.example.cinek.exceptions.ExceptionMessages;
 import com.example.cinek.exceptions.TrasaNotFoundException;
 import com.example.cinek.model.DTO.PathToVerify;
-import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.Wedrowka.Status;
+import com.example.cinek.model.DTO.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Przodownik;
-import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.WalkVerificationService;
 import org.springframework.stereotype.Service;
@@ -20,7 +18,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
 {
     @Override
     public PathToVerify getPathToVerify(Przodownik przodownik)
-    {
+    {/*
         Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null
                         && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
@@ -34,7 +32,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
                     .filter(t -> t.getWedrowki().contains(wedrowkaOptional.get())).findAny();
 
             return new PathToVerify(turystaOptional.get(), wedrowkaOptional.get(), trasaPunktowanaOptional.get());
-        }
+        }*/
         return null;
     }
 

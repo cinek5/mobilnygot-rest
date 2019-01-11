@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * Created by Cinek on 27.12.2018.
@@ -18,17 +17,17 @@ public class PunktTrasy {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotEmpty
-    @Length(max = 40)
+    @Length(max = 50)
     private String nazwaPunktu;
     @NotNull
     private Integer wysokosc;
-
-    
     @NotNull
     private Float wysokoscGeograficzna;
     @NotNull
     private Float szerokoscGeograficzna;
-
+    @OneToOne
+    @NotNull
+    private GrupaGorska grupaGorska;
 
     public PunktTrasy(){}
 
@@ -96,5 +95,15 @@ public class PunktTrasy {
 
         if (!id.equals(that.id)) return false;
         return nazwaPunktu.equals(that.nazwaPunktu);
+    }
+
+    public GrupaGorska getGrupaGorska()
+    {
+        return grupaGorska;
+    }
+
+    public void setGrupaGorska(GrupaGorska grupaGorska)
+    {
+        this.grupaGorska = grupaGorska;
     }
 }

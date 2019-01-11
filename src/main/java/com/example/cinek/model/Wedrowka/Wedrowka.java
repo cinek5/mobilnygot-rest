@@ -18,7 +18,7 @@ public class Wedrowka
     private Long id;
     @ManyToOne
     private Turysta turysta;
-    @Length(max = 40)
+    @Length(max = 50)
     @NotEmpty
     private String nazwaWedrowki;
     @JsonFormat

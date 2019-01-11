@@ -1,5 +1,7 @@
 package com.example.cinek.model.Wedrowka;
 
+import com.example.cinek.model.Converters.StatusToIntConverter;
+import com.example.cinek.model.DTO.Status;
 import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.uzytkownik.Przodownik;
 

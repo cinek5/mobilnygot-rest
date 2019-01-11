@@ -1,9 +1,6 @@
 package com.example.cinek.services.inmemory;
 
 import com.example.cinek.model.DTO.RankList;
-import com.example.cinek.model.Wedrowka.TrasaSkladowa;
-import com.example.cinek.model.Wedrowka.Wedrowka;
-import com.example.cinek.model.Wedrowka.Status;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.RankingService;
@@ -34,7 +31,7 @@ public class InMemoryRankingServiceImpl implements RankingService
         }
 
         List<Turysta> tmpList = new ArrayList<>(StaticDb.turysci);
-        for(Turysta t : tmpList)
+        /*for(Turysta t : tmpList)
         {
             int points = 0;
             for(Wedrowka w : t.getWedrowki())
@@ -54,7 +51,7 @@ public class InMemoryRankingServiceImpl implements RankingService
                 }
             }
             t.setZgromadzonePunkty(points);
-        }
+        }*/
 
         tmpList.sort((o1, o2) -> o2.getZgromadzonePunkty().compareTo(o1.getZgromadzonePunkty()));
 
