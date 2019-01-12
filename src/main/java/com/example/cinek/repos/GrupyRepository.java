@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by Cinek on 12.01.2019.
  */
-public interface GrupaRepository {
+public interface GrupyRepository {
     List<GrupaGorska> findAllGrupyGorskie();
 }

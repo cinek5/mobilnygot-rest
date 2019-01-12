@@ -1,7 +1,7 @@
 package com.example.cinek.repos.hibernate;
 
 import com.example.cinek.model.grupa.GrupaGorska;
-import com.example.cinek.repos.GrupaRepository;
+import com.example.cinek.repos.GrupyRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Repository
-public class HibernateGrupaRepository implements GrupaRepository {
+public class HibernateGrupyRepository implements GrupyRepository {
     @PersistenceContext
     private EntityManager entityManager;
     @Override

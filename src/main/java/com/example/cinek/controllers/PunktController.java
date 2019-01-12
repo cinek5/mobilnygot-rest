@@ -1,5 +1,6 @@
 package com.example.cinek.controllers;
 
+import com.example.cinek.model.DTO.PunktTrasyDTO;
 import com.example.cinek.model.trasa.PunktTrasy;
 import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.example.cinek.services.interfaces.PunktService;
@@ -32,9 +33,16 @@ public class PunktController {
         return punktService.getPunktyTrasyByGrupaGorska(grupa);
     }
 
+    @GetMapping("/lite/punkt/poczatkowy/wgrupie")
+    public List<PunktTrasyDTO> getPunktPoczatkowyInGrupaDTO(@RequestParam String grupa)
+    {
+        return PunktTrasyDTO.createFromPunktTrasy(punktService.getPoczatkowePunktyTrasyByGrupaGorska(grupa));
+    }
+
     @GetMapping("/punkt/poczatkowy/wgrupie")
     public List<PunktTrasy> getPunktyPoczatkoweInGrupa(@RequestParam String grupa) {
         return punktService.getPoczatkowePunktyTrasyByGrupaGorska(grupa);
     }
+
 
 }
