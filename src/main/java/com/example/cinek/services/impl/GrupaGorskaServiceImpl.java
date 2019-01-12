@@ -20,4 +20,9 @@ public class GrupaGorskaServiceImpl implements GrupyGorskieService {
     public List<GrupaGorska> getAllGrupyGorskie() {
         return grupyRepository.findAllGrupyGorskie();
     }
+
+    @Override
+    public List<GrupaGorska> getGrupyGorskieAssociatedWithAnyTrasa() {
+        return grupyRepository.findGrupyGorskieThatAreAssociatedWithAnyTrasa();
+    }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface GrupyGorskieService
 {
     List<GrupaGorska> getAllGrupyGorskie();
+    List<GrupaGorska> getGrupyGorskieAssociatedWithAnyTrasa();
 }

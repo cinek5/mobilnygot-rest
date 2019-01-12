@@ -22,4 +22,11 @@ public class HibernateGrupyRepository implements GrupyRepository {
         ).getResultList();
         return grupyGorskie;
     }
+
+    @Override
+    public List<GrupaGorska> findGrupyGorskieThatAreAssociatedWithAnyTrasa() {
+        List<GrupaGorska> grupyGorskie = entityManager.createQuery("Select trasa.grupaGorska from TrasaPunktowana trasa   group by trasa.grupaGorska", GrupaGorska.class
+        ).getResultList();
+        return grupyGorskie;
+    }
 }

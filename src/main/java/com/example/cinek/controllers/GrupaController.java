@@ -21,8 +21,13 @@ public class GrupaController {
     private GrupyGorskieService grupyGorskieService;
 
     @GetMapping("/grupa")
-    public List<GrupaGorska> getAllGrupyGorskie()
-    {
+    public List<GrupaGorska> getAllGrupyGorskie() {
         return grupyGorskieService.getAllGrupyGorskie();
     }
+    @GetMapping("/grupa/notempty")
+    public List<GrupaGorska> getGrupyGorskieAssociatedWithAnyTrasa()
+    {
+        return grupyGorskieService.getGrupyGorskieAssociatedWithAnyTrasa();
+    }
+
 }

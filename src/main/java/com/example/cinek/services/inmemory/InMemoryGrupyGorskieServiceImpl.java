@@ -13,4 +13,9 @@ public class InMemoryGrupyGorskieServiceImpl implements GrupyGorskieService
     {
         return StaticDb.grupyGorskie;
     }
+
+    @Override
+    public List<GrupaGorska> getGrupyGorskieAssociatedWithAnyTrasa() {
+        return null;
+    }
 }

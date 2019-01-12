@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface GrupyRepository {
     List<GrupaGorska> findAllGrupyGorskie();
+    List<GrupaGorska> findGrupyGorskieThatAreAssociatedWithAnyTrasa();
 }
