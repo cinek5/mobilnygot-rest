@@ -35,4 +35,13 @@ public class HibernatePunktyRepository implements PunktyRepository {
         ).setParameter("nazwa", nazwa).getResultList();
         return punktyTrasy;
     }
+
+    @Override
+    public List<PunktTrasy> findPoczatkowePunktyTrasyByGrupaGorska(String nazwaGrupy) {
+        List<PunktTrasy> punktyTrasy = entityManager.createQuery("Select punktTrasy from TrasaPunktowana t join t.skladowePunktyTrasy as skladowePunkty " +
+                "join skladowePunkty.punktTrasy as punktTrasy " +
+                "join punktTrasy.grupaGorska as grupa where grupa.nazwaGrupy = :nazwa and skladowePunkty.kolejnoscPunktu=1", PunktTrasy.class
+        ).setParameter("nazwa", nazwaGrupy).getResultList();
+        return punktyTrasy;
+    }
 }

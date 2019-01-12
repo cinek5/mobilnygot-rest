@@ -30,6 +30,11 @@ public class PunktServiceImpl implements PunktService {
     }
 
     @Override
+    public List<PunktTrasy> getPoczatkowePunktyTrasyByGrupaGorska(String nazwaGrupy) {
+        return punktyRepository.findPoczatkowePunktyTrasyByGrupaGorska(nazwaGrupy);
+    }
+
+    @Override
     public void insertPunktTrasy(PunktTrasy punktTrasy) {
     }
 }

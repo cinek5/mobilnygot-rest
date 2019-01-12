@@ -24,6 +24,8 @@ import java.util.List;
 @Service
 @Transactional
 public class TrasyServiceImpl implements TrasyService {
+
+
     @Autowired
     private TrasyRepository trasyRepository;
     @Autowired
@@ -90,5 +92,9 @@ public class TrasyServiceImpl implements TrasyService {
         {
             throw new DuplicateNazwaTrasyException(ExceptionMessages.DUPLICATE_NAZWA);
         }
+    }
+    @Override
+    public List<TrasaPunktowana> getTrasyStartingInPunkt(Long punktId) {
+        return trasyRepository.findTrasyPunktowaneStartingAtPunkt(punktId);
     }
 }

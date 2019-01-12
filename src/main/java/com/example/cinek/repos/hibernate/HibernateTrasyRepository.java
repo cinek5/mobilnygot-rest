@@ -46,6 +46,14 @@ public class HibernateTrasyRepository implements TrasyRepository {
     }
 
     @Override
+    public List<TrasaPunktowana> findTrasyPunktowaneStartingAtPunkt(Long punktId) {
+        TypedQuery<TrasaPunktowana> query = entityManager.createQuery(
+                "SELECT t FROM TrasaPunktowana t  join t.skladowePunktyTrasy as skladowyPunkt WHERE skladowyPunkt.kolejnoscPunktu=1 and skladowyPunkt.punktTrasy.id= :punktId", TrasaPunktowana.class);
+        List<TrasaPunktowana> trasyPunktowane = query.setParameter("punktId", punktId).getResultList();
+        return trasyPunktowane;
+    }
+
+    @Override
     @Transactional
     public void insertTrasa(Trasa trasa) {
 

@@ -17,4 +17,5 @@ public interface TrasyService {
     void updateTrasaPunktowana(Long id, TrasaPunktowana trasaPunktowana, Date dataModyfikacji);
     void insertTrasaPunktowana(TrasaPunktowana trasaPunktowana);
     void deleteTrasaPunktowana(Long id, Date dataUsuniecia);
+    List<TrasaPunktowana> getTrasyStartingInPunkt(Long punktId);
 }

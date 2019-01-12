@@ -14,5 +14,7 @@ public interface PunktService {
 
     List<PunktTrasy> getPunktyTrasyByGrupaGorska(String nazwaGrupy);
 
+    List<PunktTrasy> getPoczatkowePunktyTrasyByGrupaGorska(String nazwaGrupy);
+
     void insertPunktTrasy(PunktTrasy punktTrasy);
 }

@@ -96,4 +96,9 @@ public class InMemoryTrasyServiceImpl implements TrasyService {
         }
     }
 
+    @Override
+    public List<TrasaPunktowana> getTrasyStartingInPunkt(Long punktId) {
+        return null;
+    }
+
 }

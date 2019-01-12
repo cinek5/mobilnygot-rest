@@ -11,4 +11,5 @@ public interface PunktyRepository {
     List<PunktTrasy> findAllPunktyTrasy();
     PunktTrasy findPunktTrasyById(Long id);
     List<PunktTrasy> findPunktyTrasyByGrupaGorska(String nazwaGrupy);
+    List<PunktTrasy> findPoczatkowePunktyTrasyByGrupaGorska(String nazwaGrupy);
 }

@@ -13,6 +13,7 @@ public interface TrasyRepository {
     List<TrasaPunktowana> findAllTrasyPunktowane();
     TrasaPunktowana findTrasaPunktowanaById(Long id);
     TrasaPunktowana findTrasaPunktowanaByNazwa(String nazwa);
+    List<TrasaPunktowana> findTrasyPunktowaneStartingAtPunkt(Long punktId);
     void insertTrasa(Trasa trasa);
     void updateTrasa(Trasa trasa);
 

@@ -28,6 +28,16 @@ public class TrasyController {
     {
         return trasyService.getAllTrasyPuntkowane();
     }
+
+
+    @GetMapping("/punktowana/poczatekwpunkcie/{punktId}")
+    @CrossOrigin
+    public List<TrasaPunktowana> getPunktyPoczatekW(@PathVariable Long punktId)
+    {
+        return trasyService.getTrasyStartingInPunkt(punktId);
+    }
+
+
     @GetMapping("/punktowana/{id}")
     @CrossOrigin
     public TrasaPunktowana getTrasaPunktowana(@PathVariable("id") long id) {
@@ -73,4 +83,5 @@ public class TrasyController {
         }
         trasyService.deleteTrasaPunktowana(id, getDateFromString(dataUsuniecia));
     }
+
 }
