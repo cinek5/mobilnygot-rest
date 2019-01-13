@@ -1,17 +1,12 @@
 package com.example.cinek.services.impl;
 
-import com.example.cinek.Utils;
 import com.example.cinek.exceptions.*;
-import com.example.cinek.model.trasa.PunktTrasy;
-import com.example.cinek.model.trasa.SkladowyPunktTrasy;
 import com.example.cinek.model.trasa.Trasa;
 import com.example.cinek.model.trasa.TrasaPunktowana;
-import com.example.cinek.repos.StaticDb;
 import com.example.cinek.repos.TrasyRepository;
 import com.example.cinek.services.interfaces.TrasyService;
 import com.example.cinek.validators.TrasaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

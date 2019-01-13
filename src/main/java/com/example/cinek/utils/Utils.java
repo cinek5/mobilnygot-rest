@@ -1,4 +1,4 @@
-package com.example.cinek;
+package com.example.cinek.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

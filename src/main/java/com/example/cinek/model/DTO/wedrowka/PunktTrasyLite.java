@@ -1,4 +1,4 @@
-package com.example.cinek.model.DTO;
+package com.example.cinek.model.DTO.wedrowka;
 
 import com.example.cinek.model.trasa.PunktTrasy;
 
@@ -8,12 +8,12 @@ import java.util.List;
 /**
  * Created by Cinek on 12.01.2019.
  */
-public class PunktTrasyDTO {
+public class PunktTrasyLite {
     private Long punktId;
     private String nazwaPunktu;
     private String nazwaGrupy;
 
-    public PunktTrasyDTO(Long punktId, String nazwaPunktu, String nazwaGrupy) {
+    public PunktTrasyLite(Long punktId, String nazwaPunktu, String nazwaGrupy) {
         this.punktId = punktId;
         this.nazwaPunktu = nazwaPunktu;
         this.nazwaGrupy = nazwaGrupy;
@@ -43,13 +43,13 @@ public class PunktTrasyDTO {
         this.nazwaGrupy = nazwaGrupy;
     }
 
-    public  static PunktTrasyDTO createFromPunktTrasy(PunktTrasy punktTrasy)
+    public  static PunktTrasyLite createFromPunktTrasy(PunktTrasy punktTrasy)
     {
-        return new PunktTrasyDTO(punktTrasy.getId(), punktTrasy.getNazwaPunktu(), punktTrasy.getGrupaGorska().getNazwaGrupy());
+        return new PunktTrasyLite(punktTrasy.getId(), punktTrasy.getNazwaPunktu(), punktTrasy.getGrupaGorska().getNazwaGrupy());
     }
-    public static List<PunktTrasyDTO> createFromPunktTrasy(List<PunktTrasy> punktyTrasy)
+    public static List<PunktTrasyLite> createFromPunktTrasy(List<PunktTrasy> punktyTrasy)
     {
-        List<PunktTrasyDTO> result = new ArrayList<>();
+        List<PunktTrasyLite> result = new ArrayList<>();
         punktyTrasy.forEach(punktTrasy -> result.add(createFromPunktTrasy(punktTrasy)));
         return result;
     }

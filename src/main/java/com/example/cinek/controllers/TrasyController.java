@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.example.cinek.Utils.getDateFromString;
+import static com.example.cinek.utils.Utils.getDateFromString;
 
 /**
  * Created by Cinek on 27.12.2018.

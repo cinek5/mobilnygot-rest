@@ -1,8 +1,7 @@
 package com.example.cinek.controllers;
 
-import com.example.cinek.model.DTO.PunktTrasyDTO;
+import com.example.cinek.model.DTO.wedrowka.PunktTrasyLite;
 import com.example.cinek.model.trasa.PunktTrasy;
-import com.example.cinek.model.trasa.TrasaPunktowana;
 import com.example.cinek.services.interfaces.PunktService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,9 +33,9 @@ public class PunktController {
     }
 
     @GetMapping("/lite/punkt/poczatkowy/wgrupie")
-    public List<PunktTrasyDTO> getPunktPoczatkowyInGrupaDTO(@RequestParam String grupa)
+    public List<PunktTrasyLite> getPunktPoczatkowyInGrupaDTO(@RequestParam String grupa)
     {
-        return PunktTrasyDTO.createFromPunktTrasy(punktService.getPoczatkowePunktyTrasyByGrupaGorska(grupa));
+        return PunktTrasyLite.createFromPunktTrasy(punktService.getPoczatkowePunktyTrasyByGrupaGorska(grupa));
     }
 
     @GetMapping("/punkt/poczatkowy/wgrupie")
