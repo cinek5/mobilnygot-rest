@@ -1,5 +1,7 @@
 package com.example.cinek.repos;
 
+import com.example.cinek.model.DTO.GroupList;
+import com.example.cinek.model.DTO.Pair;
 import com.example.cinek.model.grupa.GrupaGorska;
 
 import java.util.List;

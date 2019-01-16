@@ -1,5 +1,7 @@
 package com.example.cinek.services.impl;
 
+import com.example.cinek.model.DTO.GroupList;
+import com.example.cinek.model.DTO.Pair;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.repos.GrupyRepository;
 import com.example.cinek.services.interfaces.GrupyGorskieService;
@@ -19,6 +21,18 @@ public class GrupaGorskaServiceImpl implements GrupyGorskieService {
     @Override
     public List<GrupaGorska> getAllGrupyGorskie() {
         return grupyRepository.findAllGrupyGorskie();
+    }
+
+    @Override
+    public GroupList getAllGrupyGorskieLite()
+    {
+        List<GrupaGorska> mgs =  grupyRepository.findAllGrupyGorskie();
+        GroupList groupList = new GroupList(mgs.size());
+        for(GrupaGorska mg : mgs)
+        {
+            groupList.add(mg.getId(), mg.getNazwaGrupy());
+        }
+        return groupList;
     }
 
     @Override

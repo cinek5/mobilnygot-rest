@@ -1,5 +1,6 @@
 package com.example.cinek.repos.hibernate;
 
+import com.example.cinek.model.DTO.GroupList;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.repos.GrupyRepository;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import java.util.List;
 public class HibernateGrupyRepository implements GrupyRepository {
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public List<GrupaGorska> findAllGrupyGorskie() {
         List<GrupaGorska> grupyGorskie = entityManager.createQuery("Select grupa from GrupaGorska grupa", GrupaGorska.class

@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Turysta extends Uzytkownik
@@ -32,6 +33,7 @@ public class Turysta extends Uzytkownik
     {
         return wedrowki;
     }
+
     @Override
     public boolean equals(Object obj)
     {
@@ -42,5 +44,11 @@ public class Turysta extends Uzytkownik
     public void setWedrowki(List<Wedrowka> wedrowki)
     {
         this.wedrowki = wedrowki;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(this);
     }
 }

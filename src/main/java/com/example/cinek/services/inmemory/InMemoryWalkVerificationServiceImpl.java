@@ -9,15 +9,13 @@ import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Przodownik;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.WalkVerificationService;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 public class InMemoryWalkVerificationServiceImpl implements WalkVerificationService
 {
     @Override
-    public PathToVerify getPathToVerify(Przodownik przodownik)
+    public PathToVerify getPathToVerify(Long leaderId)
     {/*
         Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null

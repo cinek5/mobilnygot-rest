@@ -40,4 +40,34 @@ public class Pamiatka
     {
         this.trasaSkladowa = trasaSkladowa;
     }
+
+    public Boolean getCzyDokumentujaca()
+    {
+        return czyDokumentujaca;
+    }
+
+    public void setCzyDokumentujaca(Boolean czyDokumentujaca)
+    {
+        this.czyDokumentujaca = czyDokumentujaca;
+    }
+
+    public Boolean getCzyPubliczna()
+    {
+        return czyPubliczna;
+    }
+
+    public void setCzyPubliczna(Boolean czyPubliczna)
+    {
+        this.czyPubliczna = czyPubliczna;
+    }
+
+    public byte[] getZdjecie()
+    {
+        return zdjecie;
+    }
+
+    public void setZdjecie(byte[] zdjecie)
+    {
+        this.zdjecie = zdjecie;
+    }
 }

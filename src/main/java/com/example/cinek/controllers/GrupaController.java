@@ -1,5 +1,7 @@
 package com.example.cinek.controllers;
 
+import com.example.cinek.model.DTO.GroupList;
+import com.example.cinek.model.DTO.Pair;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.GrupyGorskieService;
@@ -24,6 +26,12 @@ public class GrupaController {
     public List<GrupaGorska> getAllGrupyGorskie() {
         return grupyGorskieService.getAllGrupyGorskie();
     }
+
+    @GetMapping("/grupalite")
+    public GroupList getAllGrupyGorskieLite() {
+        return grupyGorskieService.getAllGrupyGorskieLite();
+    }
+
     @GetMapping("/grupa/notempty")
     public List<GrupaGorska> getGrupyGorskieAssociatedWithAnyTrasa()
     {

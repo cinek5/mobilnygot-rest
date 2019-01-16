@@ -4,32 +4,16 @@ import com.example.cinek.model.DTO.RankList;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.RankingService;
-import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Service
 public class InMemoryRankingServiceImpl implements RankingService
 {
     @Override
-    public RankList getRank(Long id, String startDate, String endDate, List<Long> groups)
+    public RankList getRank(Long id, Date startDate, Date endDate, List<Long> groups)
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Date sd, ed;
-        try
-        {
-            sd = sdf.parse(startDate);
-            ed = sdf.parse(endDate);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-
         List<Turysta> tmpList = new ArrayList<>(StaticDb.turysci);
         /*for(Turysta t : tmpList)
         {
@@ -58,10 +42,10 @@ public class InMemoryRankingServiceImpl implements RankingService
         RankList rankList = new RankList(tmpList.size());
         for(int i = 0; i < tmpList.size(); i++)
         {
-            rankList.getNames().add(tmpList.get(i).getImie() + " " + tmpList.get(i).getNazwisko().substring(0, 1) + ".");
-            rankList.getPoints().add(tmpList.get(i).getZgromadzonePunkty());
+            //rankList.getNames().add(tmpList.get(i).getImie() + " " + tmpList.get(i).getNazwisko().substring(0, 1) + ".");
+            //rankList.getPoints().add(tmpList.get(i).getZgromadzonePunkty());
         }
-        rankList.setReqTouristPosition(getPositionInList(tmpList, id));
+        rankList.setReqTouristIndex(getPositionInList(tmpList, id));
         return rankList;
     }
 

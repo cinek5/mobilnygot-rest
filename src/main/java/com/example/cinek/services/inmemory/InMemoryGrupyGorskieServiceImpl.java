@@ -1,5 +1,6 @@
 package com.example.cinek.services.inmemory;
 
+import com.example.cinek.model.DTO.GroupList;
 import com.example.cinek.model.grupa.GrupaGorska;
 import com.example.cinek.repos.StaticDb;
 import com.example.cinek.services.interfaces.GrupyGorskieService;
@@ -12,6 +13,12 @@ public class InMemoryGrupyGorskieServiceImpl implements GrupyGorskieService
     public List<GrupaGorska> getAllGrupyGorskie()
     {
         return StaticDb.grupyGorskie;
+    }
+
+    @Override
+    public GroupList getAllGrupyGorskieLite()
+    {
+        return null;
     }
 
     @Override

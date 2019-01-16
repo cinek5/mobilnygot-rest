@@ -14,17 +14,17 @@ public class VerificationController
     @Autowired
     WalkVerificationService walkVerificationService;
 
-    @GetMapping("/znajdz_trase")
+    @GetMapping("/znajdz_trase/{id}")
     @CrossOrigin
-    public PathToVerify getTrasaToVerification(@RequestBody Przodownik przodownik)
+    public PathToVerify getTrasaToVerification(@PathVariable("id") Long leaderId)
     {
-        return walkVerificationService.getPathToVerify(przodownik);
+        return walkVerificationService.getPathToVerify(leaderId);
     }
 
-    @GetMapping("/ustaw_status/{id}/{status}/{przodownikId}/{points}")
+    @GetMapping("/ustaw_status/{id}/{status}/{leaderId}/{points}")
     @CrossOrigin
     public void setStatus(@PathVariable("id") long id, @PathVariable("status") String status,
-                          @PathVariable("przodownikId") Long przodownikId, @PathVariable("points") Integer points)
+                          @PathVariable("leaderId") Long przodownikId, @PathVariable("points") Integer points)
     {
         Status stat = Enum.valueOf(Status.class, status);
         walkVerificationService.setStatus(id, stat, przodownikId, points);
