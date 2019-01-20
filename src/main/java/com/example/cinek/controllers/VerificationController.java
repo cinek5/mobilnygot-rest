@@ -21,7 +21,7 @@ public class VerificationController
         return walkVerificationService.getPathToVerify(leaderId);
     }
 
-    @GetMapping("/ustaw_status/{id}/{status}/{leaderId}/{points}")
+    @PostMapping("/ustaw_status/{id}/{status}/{leaderId}/{points}")
     @CrossOrigin
     public void setStatus(@PathVariable("id") long id, @PathVariable("status") String status,
                           @PathVariable("leaderId") Long przodownikId, @PathVariable("points") Integer points)
