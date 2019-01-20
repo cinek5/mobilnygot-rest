@@ -1,8 +1,16 @@
 package com.example.cinek.utils;
 
-public class GeolocationDecimalToDegreesConverter{
-    // Input a double latitude or longitude in the decimal format
-    // e.g. -79.982195
+/**
+ * This is a class with static methods to help convert between coordinates formats.
+ */
+public class GeolocationDecimalToDegreesConverter
+{
+    /**
+     * Creates a String with both coordinates dms representation.
+     * @param longitude float longitude value
+     * @param latitude float latitude value
+     * @return returns a formatted String (e.g. 79°58'55"N 21°36'55"E)
+     */
     public static String decimalToDMS(float longitude, float latitude)
     {
         String longSign = longitude > 0 ? "N" : "S";
@@ -12,29 +20,16 @@ public class GeolocationDecimalToDegreesConverter{
                 decimalToDMS(latitude), latSign);
     }
 
-    public static String decimalToDMS(float coord) {
-        // gets the modulus the coordinate divided by one (MOD1).
-        // in other words gets all the numbers after the decimal point.
-        // e.g. mod := -79.982195 % 1 == 0.982195
-        //
-        // next get the integer part of the coord. On other words the whole number part.
-        // e.g. intPart := -79
-
+    /**
+     * Creates a String with dms coordinate representation.
+     * @param coord float coord value
+     * @return returns a formatted String (e.g. 79°58'55")
+     */
+    public static String decimalToDMS(float coord)
+    {
         float mod = coord % 1;
         int intPart = (int)coord;
-
-        //set degrees to the value of intPart
-        //e.g. degrees := "-79"
-
         int degrees = intPart;
-
-        // next times the MOD1 of degrees by 60 so we can find the integer part for minutes.
-        // get the MOD1 of the new coord to find the numbers after the decimal point.
-        // e.g. coord :=  0.982195 * 60 == 58.9317
-        //	mod   := 58.9317 % 1    == 0.9317
-        //
-        // next get the value of the integer part of the coord.
-        // e.g. intPart := 58
 
         coord = mod * 60;
         mod = coord % 1;
@@ -44,13 +39,8 @@ public class GeolocationDecimalToDegreesConverter{
             intPart *= -1;
         }
 
-        // set minutes to the value of intPart.
-        // e.g. minutes = "58"
         int minutes = intPart;
 
-        //do the same again for minutes
-        //e.g. coord := 0.9317 * 60 == 55.902
-        //e.g. intPart := 55
         coord = mod * 60;
         intPart = (int)coord;
         if (intPart < 0) {
@@ -58,32 +48,27 @@ public class GeolocationDecimalToDegreesConverter{
             intPart *= -1;
         }
 
-        // set seconds to the value of intPart.
-        // e.g. seconds = "55"
         int seconds = intPart;
 
-        // I used this format for android but you can change it
-        // to return in whatever format you like
-        // e.g. output = "-79/1,58/1,56/1"
-        //Standard output of D°M′S″
-        //output = degrees + "°" + minutes + "'" + seconds + "\"";
         return String.format("%s°%s'%s''", degrees, minutes, seconds);
     }
 
-    /*
-     * Conversion DMS to decimal
+    /**
+     * Creates decimal value coordinate from DMS
      *
      * Input: latitude or longitude in the DMS format ( example: W 79° 58' 55.903")
      * Return: latitude or longitude in decimal format
-     * hemisphereOUmeridien => {W,E,S,N}
-     *
+     * @param hemisphereOuMerid one from values {W,E,S,N}
+     * @param degrees dms degrees value
+     * @param degrees dms minutes value
+     * @param degrees dms seconds value
      */
-    public static double DMSToDecimal(String hemisphereOuMeridien,
+    public static double DmsToDecimal(String hemisphereOuMerid,
                                       double degrees, double minutes, double seconds)
     {
         double signe = 1.0;
 
-        if((hemisphereOuMeridien.equals("W")) || (hemisphereOuMeridien.equals("S")))
+        if((hemisphereOuMerid.equals("W")) || (hemisphereOuMerid.equals("S")))
         {
             signe = -1.0;
         }
