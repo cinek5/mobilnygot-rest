@@ -1,6 +1,5 @@
 package com.example.cinek.services.impl;
 
-import com.example.cinek.model.Converters.StatusToIntConverter;
 import com.example.cinek.model.DTO.Pair;
 import com.example.cinek.model.DTO.PathToVerify;
 import com.example.cinek.model.DTO.Status;
@@ -12,6 +11,7 @@ import com.example.cinek.model.trasa.TrasaNiepunktowana;
 import com.example.cinek.model.uzytkownik.Turysta;
 import com.example.cinek.repos.VerificationRepository;
 import com.example.cinek.services.interfaces.WalkVerificationService;
+import com.example.cinek.utils.GeolocationDecimalToDegreesConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +47,8 @@ public class WalkVerificationServiceImpl implements WalkVerificationService
         {
             PunktTrasy tp = cpp.getPunktTrasy();
             String name = tp.getNazwaPunktu();
-            String cords = calculateCordinates(tp.getWysokoscGeograficzna(),
-                    tp.getSzerokoscGeograficzna());
+            String cords = GeolocationDecimalToDegreesConverter.decimalToDMS(
+                    tp.getSzerokoscGeograficzna(), tp.getWysokoscGeograficzna());
 
             cppNamesAndCords.add(new Pair<>(name, cords));
         }
@@ -68,16 +68,9 @@ public class WalkVerificationServiceImpl implements WalkVerificationService
         return pathToVerify;
     }
 
-    private String calculateCordinates(Float longitude, Float latitude)
-    {
-        return "21 N 37 E";
-    }
-
     @Override
     public void setStatus(Long trackId, Status status, Long leaderId, Integer points)
     {
-        StatusToIntConverter converter = new StatusToIntConverter();
-        Integer statusInt = converter.convertToDatabaseColumn(status);
-        verificationRepository.changeStatusForCompoundTrack(trackId, statusInt, leaderId, points);
+        verificationRepository.changeStatusForCompoundTrack(trackId, status, leaderId, points);
     }
 }
