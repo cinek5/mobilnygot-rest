@@ -1,5 +1,6 @@
 package com.example.cinek.repos.hibernate;
 
+import com.example.cinek.model.Converters.StatusToIntConverter;
 import com.example.cinek.model.DTO.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.grupa.GrupaGorska;
@@ -37,9 +38,9 @@ public class HibernateVerificationRepository implements VerificationRepository
         List<GrupaGorska> groups = groupsQuery.getResultList();
         TypedQuery<TrasaSkladowa> componentTracksQuery = entityManager.createQuery(
                 "SELECT ts FROM TrasaSkladowa ts " +
-                        "WHERE ts.status = 2 AND ts.trasa.grupaGorska IN :groups",
+                        "WHERE ts.status = :oczekujacaValue AND ts.trasa.grupaGorska IN :groups",
                 TrasaSkladowa.class
-        ).setParameter("groups", groups);
+        ).setParameter("oczekujacaValue", Status.oczekujaca).setParameter("groups", groups);
         List<TrasaSkladowa> componentTracks = componentTracksQuery.getResultList();
         return componentTracks;
     }
