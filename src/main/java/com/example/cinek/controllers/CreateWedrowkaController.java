@@ -1,12 +1,10 @@
 package com.example.cinek.controllers;
 
 import com.example.cinek.model.DTO.wedrowka.TrasaPunktowanaLite;
+import com.example.cinek.model.DTO.wedrowka.WedrowkaLite;
 import com.example.cinek.services.interfaces.CreateWedrowkaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,10 @@ public class CreateWedrowkaController {
     public List<TrasaPunktowanaLite> getTrasyPktLitesStartingInPoint(@PathVariable Long     punktId)
     {
         return createWedrowkaService.getTrasyPktLiteStartingInPunkt(punktId);
+    }
+    @PostMapping("/wedrowka")
+    public void createWedrowka(@RequestBody WedrowkaLite wedrowkaLite)
+    {
+        createWedrowkaService.createWedrowka(wedrowkaLite);
     }
 }

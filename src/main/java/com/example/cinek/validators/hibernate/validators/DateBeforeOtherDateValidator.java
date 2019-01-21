@@ -27,9 +27,15 @@ public class DateBeforeOtherDateValidator implements ConstraintValidator<DateBef
             Object dateFieldValue = getFieldValue(o,date);
             Object otherDateFieldValue = getFieldValue(o,otherDate);
 
-            Date date = (Date)dateFieldValue;
-            Date otherDate = (Date) otherDateFieldValue;
-            return date.before(otherDate);
+            if (otherDateFieldValue!=null) {
+                Date date = (Date) dateFieldValue;
+                Date otherDate = (Date) otherDateFieldValue;
+                return date.before(otherDate);
+            } else
+            {
+                return true;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;

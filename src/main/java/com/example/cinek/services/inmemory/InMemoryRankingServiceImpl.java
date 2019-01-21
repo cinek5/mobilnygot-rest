@@ -38,7 +38,7 @@ public class InMemoryRankingServiceImpl implements RankingService
             {
                 if(w.getDataWedrowki().after(sd) && w.getDataWedrowki().before(ed))
                 {
-                    for(TrasaSkladowa ts : w.getTrasySkladowe())
+                    for(TrasaSkladowaLite ts : w.getTrasySkladowe())
                     {
                         if(ts.getStatus().equals(Status.potwierdzona))
                         {

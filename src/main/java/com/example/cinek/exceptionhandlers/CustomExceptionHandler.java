@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestControllerAdvice
 public class CustomExceptionHandler {
-    @ExceptionHandler({DuplicateNazwaTrasyException.class, NotValidOrderInSkladowePunktyException.class, TrasaAlreadyDeletedException.class, TrasaNotFoundException.class, TrasaNotFoundException.class, TrasaAndPunktDifferentGroupsException.class})
+    @ExceptionHandler({DuplicateNazwaTrasyException.class, NotValidOrderInSkladowePunktyException.class, TrasaAlreadyDeletedException.class, TrasaNotFoundException.class, TrasaNotEnoughPunktyException.class, TrasaAndPunktDifferentGroupsException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleException(Exception ex) {
         ErrorResponse response = new ErrorResponse(ex.getMessage());

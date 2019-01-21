@@ -18,6 +18,7 @@ public class PunktTrasyLite {
         this.nazwaPunktu = nazwaPunktu;
         this.nazwaGrupy = nazwaGrupy;
     }
+    public PunktTrasyLite() {}
 
     public Long getPunktId() {
         return punktId;

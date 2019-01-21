@@ -19,7 +19,7 @@ public class InMemoryWalkVerificationServiceImpl implements WalkVerificationServ
     @Override
     public PathToVerify getPathToVerify(Przodownik przodownik)
     {/*
-        Optional<TrasaSkladowa> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
+        Optional<TrasaSkladowaLite> trasaPunktowanaOptional = StaticDb.trasySkladowe.stream()
                 .filter(trasa -> trasa.getVerifyPrzodownik() == null
                         && przodownik.getAuthorizedGrupy().contains(trasa.getTrasa().getGrupaGorska())).findAny();
 
