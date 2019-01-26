@@ -50,7 +50,7 @@ public class GeolocationDecimalToDegreesConverter
 
         int seconds = intPart;
 
-        return String.format("%s°%s'%s''", degrees, minutes, seconds);
+        return String.format("%02d°%02d'%02d''", degrees, minutes, seconds);
     }
 
     /**
