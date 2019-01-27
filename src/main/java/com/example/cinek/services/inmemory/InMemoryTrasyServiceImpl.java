@@ -101,4 +101,9 @@ public class InMemoryTrasyServiceImpl implements TrasyService {
         return null;
     }
 
+    @Override
+    public List<TrasaPunktowana> getTrasyPunktowaneByQuery(String query) {
+        return null;
+    }
+
 }

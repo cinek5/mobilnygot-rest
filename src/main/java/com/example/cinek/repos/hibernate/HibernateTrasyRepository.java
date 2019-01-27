@@ -73,4 +73,12 @@ public class HibernateTrasyRepository implements TrasyRepository {
     public void updateTrasa(Trasa trasa) {
         entityManager.merge(trasa);
     }
+
+    @Override
+    public List<TrasaPunktowana> findTrasyPunktowaneByQuery(String query) {
+        TypedQuery<TrasaPunktowana> qr = entityManager.createQuery(
+                "SELECT distinct t FROM TrasaPunktowana t  join t.skladowePunktyTrasy as skladowyPunkt WHERE upper(t.nazwa) like :query or upper(skladowyPunkt.punktTrasy.nazwaPunktu) like :query or upper(t.grupaGorska.nazwaGrupy) like :query ", TrasaPunktowana.class);
+        List<TrasaPunktowana> trasyPunktowane = qr.setParameter("query", "%"+query.toUpperCase()+"%").getResultList();
+        return trasyPunktowane;
+    }
 }

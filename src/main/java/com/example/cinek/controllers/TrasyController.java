@@ -28,6 +28,12 @@ public class TrasyController {
     {
         return trasyService.getAllTrasyPuntkowane();
     }
+    @GetMapping("/punktowana/byquery/{query}")
+    @CrossOrigin
+    public List<TrasaPunktowana> getTrasyPunktowaneByQuery(@PathVariable String query)
+    {
+        return trasyService.getTrasyPunktowaneByQuery(query);
+    }
 
 
     @GetMapping("/punktowana/poczatekwpunkcie/{punktId}")

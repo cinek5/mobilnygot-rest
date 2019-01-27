@@ -71,6 +71,7 @@ public class CreateWedrowkaServiceImpl implements CreateWedrowkaService {
         Wedrowka wedrowka = new Wedrowka();
         wedrowka.setNazwaWedrowki(nazwaWedrowki);
         wedrowka.setDataWedrowki(new Date());
+        wedrowka.setPunktyZaWedrowke(wedrowkaLite.calcPtsSum());
         wedrowkaLite.getTrasySkladowe().forEach(trasaSkladowaLite -> {
            Long idTrasy =  trasaSkladowaLite.getTrasaPunktowanaLite().getIdTrasy();
            TrasaPunktowana trasa = trasyService.getTrasaPunktowanaById(idTrasy);

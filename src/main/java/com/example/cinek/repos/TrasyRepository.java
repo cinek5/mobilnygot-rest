@@ -11,34 +11,34 @@ import java.util.List;
  */
 public interface TrasyRepository {
     /**
-     * <h3>Metoda zwracają obiekt trasy z bazy danych po podaniu id </h3>
+     * <h3>Metoda zwracajaca obiekt trasy z bazy danych po podaniu id </h3>
      * @param id id trasy
      * @return Trasa obiekt znalezionej trasy lub null kiedy nie znaleziono trasy
      */
     Trasa findTrasaById(Long id);
 
     /**
-     *<h3>Metoda zwracająca wszystkie trasy punktowane znajdujące się w bazie danych</h3>
+     *<h3>Metoda zwracajaca wszystkie trasy punktowane znajdujace sie w bazie danych</h3>
      * @return  lista wszystkich tras punktowanych znajdujacych się w bazie
      */
     List<TrasaPunktowana> findAllTrasyPunktowane();
 
     /**
-     * <h3>Metoda zwracająca trasę punktowaną według podanego id.</h3>
+     * <h3>Metoda zwracajaca trasę punktowaną wedlug podanego id.</h3>
      * @param id id trasy punktowanej
      * @return TrasaPunktowana obiekt trasy punktowanej lub null kiedy nie znaleziono
      */
     TrasaPunktowana findTrasaPunktowanaById(Long id);
 
     /**
-     * <h3>Metoda zwracająca trasę punktowaną według podanej nazwy</h3>
+     * <h3>Metoda zwracajaca trase punktowana wedlug podanej nazwy</h3>
      * @param nazwa nazwa trasy punktowanej
      * @return TrasaPunktowana obiekt trasy punktowanej lub null kiedy nie znaleziono
      */
     TrasaPunktowana findTrasaPunktowanaByNazwa(String nazwa);
 
     /**
-     * <h3>Metoda zwracająca listę tras punktowanych, które zaczanają się w punkie o podanym id</h3>
+     * <h3>Metoda zwracajaca liste tras punktowanych, ktore zaczanaja sie w punkie o podanym id</h3>
      * @param punktId id punktu poczatkowego
      * @return  lista tras punktowanych
      */
@@ -55,5 +55,14 @@ public interface TrasyRepository {
      * @param trasa obiekt trasy
      */
     void updateTrasa(Trasa trasa);
+
+    /**
+     * Metoda zwracajaca trasy, szuka dopasowania query w nazwie trasy, grupie, nazwach punktow
+     * @param query zapytanie
+     * @return
+     */
+    List<TrasaPunktowana> findTrasyPunktowaneByQuery(String query);
+
+
 
 }

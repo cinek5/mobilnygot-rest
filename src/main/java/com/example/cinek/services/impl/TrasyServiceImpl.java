@@ -92,4 +92,9 @@ public class TrasyServiceImpl implements TrasyService {
     public List<TrasaPunktowana> getTrasyStartingInPunkt(Long punktId) {
         return trasyRepository.findTrasyPunktowaneStartingAtPunkt(punktId);
     }
+
+    @Override
+    public List<TrasaPunktowana> getTrasyPunktowaneByQuery(String query) {
+        return trasyRepository.findTrasyPunktowaneByQuery(query);
+    }
 }
