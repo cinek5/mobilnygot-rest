@@ -1,6 +1,5 @@
 package com.example.cinek.repos.hibernate;
 
-import com.example.cinek.model.Converters.StatusToIntConverter;
 import com.example.cinek.model.DTO.Status;
 import com.example.cinek.model.Wedrowka.TrasaSkladowa;
 import com.example.cinek.model.grupa.GrupaGorska;
